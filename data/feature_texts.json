@@ -1,0 +1,2609 @@
+[
+  {
+    "id": "GB020",
+    "original": "Are there definite or specific articles?",
+    "en": {
+      "has": "has definite or specific articles",
+      "lacks": "has no definite or specific articles"
+    },
+    "ru": {
+      "has": "есть определённые (или специфические) артикли",
+      "lacks": "нет определённых (или специфических) артиклей",
+      "note": "Артикль — служебный показатель при существительном, выражающий определённость или специфичность без указания на место в пространстве (в отличие от указательных слов)."
+    }
+  },
+  {
+    "id": "GB021",
+    "original": "Do indefinite nominals commonly have indefinite articles?",
+    "en": {
+      "has": "commonly uses indefinite articles with indefinite nouns",
+      "lacks": "does not commonly use indefinite articles"
+    },
+    "ru": {
+      "has": "неопределённые существительные обычно сопровождаются неопределённым артиклем",
+      "lacks": "неопределённые существительные обычно не сопровождаются артиклем",
+      "note": "Речь о регулярном показателе неопределённости вроде англ. a/an; числительное «один» засчитывается, только если оно грамматикализовалось в артикль."
+    }
+  },
+  {
+    "id": "GB022",
+    "original": "Are there prenominal articles?",
+    "en": {
+      "has": "has articles placed before the noun",
+      "lacks": "has no articles before the noun"
+    },
+    "ru": {
+      "has": "есть артикли, стоящие перед существительным",
+      "lacks": "нет артиклей перед существительным",
+      "note": "Учитываются любые артикли (определённые и неопределённые), стоящие в препозиции к существительному."
+    }
+  },
+  {
+    "id": "GB023",
+    "original": "Are there postnominal articles?",
+    "en": {
+      "has": "has articles placed after the noun",
+      "lacks": "has no articles after the noun"
+    },
+    "ru": {
+      "has": "есть артикли, стоящие после существительного",
+      "lacks": "нет артиклей после существительного",
+      "note": "Учитываются любые артикли, стоящие в постпозиции к существительному, в том числе суффиксальные (как в болгарском или шведском)."
+    }
+  },
+  {
+    "id": "GB024",
+    "original": "What is the order of numeral and noun in the NP?",
+    "original_values": {
+      "1": "Num-N",
+      "2": "N-Num",
+      "3": "both."
+    },
+    "en": {
+      "values": {
+        "1": "puts numerals before the noun ('three houses')",
+        "2": "puts numerals after the noun ('houses three')",
+        "3": "allows numerals both before and after the noun"
+      }
+    },
+    "ru": {
+      "values": {
+        "1": "числительное стоит перед существительным («три дома»)",
+        "2": "числительное стоит после существительного («дома три»)",
+        "3": "числительное может стоять и перед существительным, и после него"
+      },
+      "note": "Порядок числительного и существительного в нейтральной именной группе."
+    }
+  },
+  {
+    "id": "GB025",
+    "original": "What is the order of adnominal demonstrative and noun?",
+    "original_values": {
+      "1": "Dem-N",
+      "2": "N-Dem",
+      "3": "both."
+    },
+    "en": {
+      "values": {
+        "1": "puts demonstratives before the noun ('this house')",
+        "2": "puts demonstratives after the noun ('house this')",
+        "3": "allows demonstratives both before and after the noun"
+      }
+    },
+    "ru": {
+      "values": {
+        "1": "указательное слово стоит перед существительным («этот дом»)",
+        "2": "указательное слово стоит после существительного («дом этот»)",
+        "3": "указательное слово может стоять и перед существительным, и после него"
+      },
+      "note": "Порядок указательного слова и существительного в нейтральной именной группе."
+    }
+  },
+  {
+    "id": "GB026",
+    "original": "Can adnominal property words occur discontinuously?",
+    "en": {
+      "has": "allows adjective-like words to be split off from their noun",
+      "lacks": "does not allow adjective-like words to be split off from their noun"
+    },
+    "ru": {
+      "has": "слова-признаки (прилагательные) могут стоять отдельно от своего существительного, не образуя с ним непрерывную группу",
+      "lacks": "слова-признаки не могут отрываться от своего существительного",
+      "note": "Разрывные именные группы: определение и определяемое разделены другими словами клаузы."
+    }
+  },
+  {
+    "id": "GB027",
+    "original": "Are nominal conjunction and comitative expressed by different elements?",
+    "en": {
+      "has": "uses different words for 'and' (between nouns) and 'with'",
+      "lacks": "uses the same word for 'and' (between nouns) and 'with'"
+    },
+    "ru": {
+      "has": "сочинительный союз «и» между существительными и комитатив «с» выражаются разными элементами",
+      "lacks": "«и» между существительными и «с» (комитатив) выражаются одним и тем же элементом",
+      "note": "Во многих языках «Иван и Мария» и «Иван с Марией» оформляются одинаково; здесь спрашивается, различаются ли эти показатели."
+    }
+  },
+  {
+    "id": "GB028",
+    "original": "Is there a distinction between inclusive and exclusive?",
+    "en": {
+      "has": "distinguishes inclusive and exclusive 'we'",
+      "lacks": "does not distinguish inclusive and exclusive 'we'"
+    },
+    "ru": {
+      "has": "различаются инклюзивное и эксклюзивное «мы»",
+      "lacks": "не различаются инклюзивное и эксклюзивное «мы»",
+      "note": "Инклюзив — «мы, включая тебя», эксклюзив — «мы, но без тебя»."
+    }
+  },
+  {
+    "id": "GB030",
+    "original": "Is there a gender distinction in independent 3rd person pronouns?",
+    "en": {
+      "has": "has gender in third-person pronouns (like 'he' vs 'she')",
+      "lacks": "has no gender in third-person pronouns"
+    },
+    "ru": {
+      "has": "в личных местоимениях 3-го лица есть родовое различие (как «он» / «она»)",
+      "lacks": "в личных местоимениях 3-го лица нет родового различия",
+      "note": "Учитываются самостоятельные местоимения 3-го лица; различие может быть по полу, одушевлённости или классу."
+    }
+  },
+  {
+    "id": "GB031",
+    "original": "Is there a dual or unit augmented form (in addition to plural or augmented) for all person categories in the pronoun system?",
+    "en": {
+      "has": "has dual (or unit-augmented) pronouns for every person",
+      "lacks": "lacks dual (or unit-augmented) pronouns for every person"
+    },
+    "ru": {
+      "has": "у всех лиц в системе местоимений есть двойственное (или «единично-расширенное») число",
+      "lacks": "двойственное (или единично-расширенное) число есть не у всех лиц или отсутствует",
+      "note": "Двойственное число — особые формы для «мы двое», «вы двое», «они двое»; требуется, чтобы они были для всех лиц."
+    }
+  },
+  {
+    "id": "GB035",
+    "original": "Are there three or more distance contrasts in demonstratives?",
+    "en": {
+      "has": "distinguishes three or more distances in demonstratives",
+      "lacks": "distinguishes fewer than three distances in demonstratives"
+    },
+    "ru": {
+      "has": "в указательных словах три или больше степеней удалённости",
+      "lacks": "в указательных словах меньше трёх степеней удалённости",
+      "note": "Например, «этот (у меня) — тот (у тебя) — тот (далеко от нас обоих)»."
+    }
+  },
+  {
+    "id": "GB036",
+    "original": "Do demonstratives show an elevation distinction?",
+    "en": {
+      "has": "distinguishes elevation in demonstratives ('up there', 'down there')",
+      "lacks": "has no elevation distinction in demonstratives"
+    },
+    "ru": {
+      "has": "указательные слова различают высоту («тот, наверху» / «тот, внизу»)",
+      "lacks": "указательные слова не различают высоту",
+      "note": "Типично для горных регионов: указательное местоимение сообщает, выше или ниже говорящего находится объект."
+    }
+  },
+  {
+    "id": "GB037",
+    "original": "Do demonstratives show a visible-nonvisible distinction?",
+    "en": {
+      "has": "distinguishes visible and non-visible in demonstratives",
+      "lacks": "has no visible/non-visible distinction in demonstratives"
+    },
+    "ru": {
+      "has": "указательные слова различают видимое и невидимое",
+      "lacks": "указательные слова не различают видимое и невидимое",
+      "note": "Особые указательные формы для объектов, которые говорящий в данный момент не видит."
+    }
+  },
+  {
+    "id": "GB038",
+    "original": "Are there demonstrative classifiers?",
+    "en": {
+      "has": "has demonstrative classifiers",
+      "lacks": "has no demonstrative classifiers"
+    },
+    "ru": {
+      "has": "есть указательные классификаторы",
+      "lacks": "нет указательных классификаторов",
+      "note": "Классификаторы, сопровождающие указательное слово и выбираемые по семантическому классу существительного."
+    }
+  },
+  {
+    "id": "GB039",
+    "original": "Is there nonphonological allomorphy of noun number markers?",
+    "en": {
+      "has": "has noun plural (or other number) markers whose choice is not predictable from sound",
+      "lacks": "has no such unpredictable number allomorphy on nouns"
+    },
+    "ru": {
+      "has": "у показателей числа существительных есть нефонологическая алломорфия (выбор формы не определяется звучанием)",
+      "lacks": "нет нефонологической алломорфии показателей числа существительных",
+      "note": "Например, англ. ox – oxen, child – children рядом с -s: выбор показателя зависит от конкретного слова, а не от звуков."
+    }
+  },
+  {
+    "id": "GB041",
+    "original": "Are there several nouns (more than three) which are suppletive for number?",
+    "en": {
+      "has": "has more than three nouns with suppletive number forms (like 'person' / 'people')",
+      "lacks": "has at most three suppletive nouns for number"
+    },
+    "ru": {
+      "has": "больше трёх существительных образуют число супплетивно (как «человек» — «люди»)",
+      "lacks": "не больше трёх существительных образуют число супплетивно",
+      "note": "Супплетивизм — образование форм от разных корней: «ребёнок» — «дети»."
+    }
+  },
+  {
+    "id": "GB042",
+    "original": "Is there productive overt morphological singular marking on nouns?",
+    "en": {
+      "has": "productively marks singular on nouns",
+      "lacks": "does not productively mark singular on nouns"
+    },
+    "ru": {
+      "has": "единственное число продуктивно маркируется на существительном отдельным показателем",
+      "lacks": "единственное число на существительном специально не маркируется",
+      "note": "Речь о выделенном показателе единственного числа (сингулятиве или окончании), а не о простом отсутствии показателя множественного."
+    }
+  },
+  {
+    "id": "GB043",
+    "original": "Is there productive morphological dual marking on nouns?",
+    "en": {
+      "has": "productively marks dual on nouns",
+      "lacks": "does not productively mark dual on nouns"
+    },
+    "ru": {
+      "has": "у существительных есть продуктивная морфологическая форма двойственного числа",
+      "lacks": "нет продуктивного двойственного числа у существительных",
+      "note": "Двойственное число — особая форма для двух предметов."
+    }
+  },
+  {
+    "id": "GB044",
+    "original": "Is there productive morphological plural marking on nouns?",
+    "en": {
+      "has": "productively marks plural on nouns",
+      "lacks": "does not productively mark plural on nouns"
+    },
+    "ru": {
+      "has": "у существительных есть продуктивное морфологическое множественное число",
+      "lacks": "нет продуктивного морфологического множественного числа у существительных",
+      "note": "Учитывается морфологическое (аффиксальное, тональное и т. п.) множественное число, а не отдельные слова вроде «много»."
+    }
+  },
+  {
+    "id": "GB046",
+    "original": "Is there an associative plural marker for nouns?",
+    "en": {
+      "has": "has an associative plural ('X and his/her group')",
+      "lacks": "has no associative plural"
+    },
+    "ru": {
+      "has": "есть ассоциативное множественное число («Х и его люди»)",
+      "lacks": "нет ассоциативного множественного числа",
+      "note": "Ассоциатив обозначает человека вместе с его окружением: яп. Tanaka-tachi «Танака и его компания»."
+    }
+  },
+  {
+    "id": "GB047",
+    "original": "Is there a productive morphological pattern for deriving an action/state noun from a verb?",
+    "en": {
+      "has": "has a productive way to derive action/state nouns from verbs",
+      "lacks": "has no productive way to derive action/state nouns from verbs"
+    },
+    "ru": {
+      "has": "есть продуктивный способ образовывать от глаголов имена действия/состояния",
+      "lacks": "нет продуктивного способа образовывать имена действия/состояния",
+      "note": "Как «читать» → «чтение»."
+    }
+  },
+  {
+    "id": "GB048",
+    "original": "Is there a productive morphological pattern for deriving an agent noun from a verb?",
+    "en": {
+      "has": "has a productive way to derive agent nouns from verbs",
+      "lacks": "has no productive way to derive agent nouns from verbs"
+    },
+    "ru": {
+      "has": "есть продуктивный способ образовывать от глаголов имена деятеля",
+      "lacks": "нет продуктивного способа образовывать имена деятеля",
+      "note": "Как «читать» → «читатель», англ. teach → teacher."
+    }
+  },
+  {
+    "id": "GB049",
+    "original": "Is there a productive morphological pattern for deriving an object noun from a verb?",
+    "en": {
+      "has": "has a productive way to derive object nouns from verbs",
+      "lacks": "has no productive way to derive object nouns from verbs"
+    },
+    "ru": {
+      "has": "есть продуктивный способ образовывать от глаголов имена объекта (результата) действия",
+      "lacks": "нет продуктивного способа образовывать имена объекта",
+      "note": "Как англ. employ → employee, «варить» → «варенье»."
+    }
+  },
+  {
+    "id": "GB051",
+    "original": "Is there a gender/noun class system where sex is a factor in class assignment?",
+    "en": {
+      "has": "has grammatical gender or noun classes based partly on sex",
+      "lacks": "has no gender/noun class system based on sex"
+    },
+    "ru": {
+      "has": "есть род или именные классы, при распределении по которым учитывается пол",
+      "lacks": "нет системы рода/классов, учитывающей пол",
+      "note": "Например, мужской и женский род, в которые попадают существительные, обозначающие мужчин и женщин."
+    }
+  },
+  {
+    "id": "GB052",
+    "original": "Is there a gender/noun class system where shape is a factor in class assignment?",
+    "en": {
+      "has": "has grammatical gender or noun classes based partly on shape",
+      "lacks": "has no gender/noun class system based on shape"
+    },
+    "ru": {
+      "has": "есть род или именные классы, при распределении по которым учитывается форма предмета",
+      "lacks": "нет системы рода/классов, учитывающей форму",
+      "note": "Например, отдельный класс для длинных и тонких или для круглых предметов."
+    }
+  },
+  {
+    "id": "GB053",
+    "original": "Is there a gender/noun class system where animacy is a factor in class assignment?",
+    "en": {
+      "has": "has grammatical gender or noun classes based partly on animacy",
+      "lacks": "has no gender/noun class system based on animacy"
+    },
+    "ru": {
+      "has": "есть род или именные классы, при распределении по которым учитывается одушевлённость",
+      "lacks": "нет системы рода/классов, учитывающей одушевлённость",
+      "note": "Одушевлённые и неодушевлённые существительные попадают в разные классы."
+    }
+  },
+  {
+    "id": "GB054",
+    "original": "Is there a gender/noun class system where plant status is a factor in class assignment?",
+    "en": {
+      "has": "has grammatical gender or noun classes with a class for plants",
+      "lacks": "has no gender/noun class system based on plant status"
+    },
+    "ru": {
+      "has": "есть род или именные классы, где растения образуют особый класс",
+      "lacks": "нет системы рода/классов, учитывающей принадлежность к растениям",
+      "note": "Встречается, например, в ряде языков Австралии и Африки."
+    }
+  },
+  {
+    "id": "GB057",
+    "original": "Are there numeral classifiers?",
+    "en": {
+      "has": "has numeral classifiers",
+      "lacks": "has no numeral classifiers"
+    },
+    "ru": {
+      "has": "есть счётные классификаторы",
+      "lacks": "нет счётных классификаторов",
+      "note": "Слова, которые нужны при счёте и выбираются по типу предмета: кит. sān běn shū «три (томов) книги»."
+    }
+  },
+  {
+    "id": "GB058",
+    "original": "Are there possessive classifiers?",
+    "en": {
+      "has": "has possessive classifiers",
+      "lacks": "has no possessive classifiers"
+    },
+    "ru": {
+      "has": "есть посессивные классификаторы",
+      "lacks": "нет посессивных классификаторов",
+      "note": "В притяжательной конструкции выбирается показатель по типу обладания: «моё (для еды)», «моё (для питья)». Типично для Океании."
+    }
+  },
+  {
+    "id": "GB059",
+    "original": "Is the adnominal possessive construction different for alienable and inalienable nouns?",
+    "en": {
+      "has": "treats alienable and inalienable possession differently",
+      "lacks": "does not distinguish alienable and inalienable possession"
+    },
+    "ru": {
+      "has": "притяжательная конструкция различается для отчуждаемой и неотчуждаемой принадлежности",
+      "lacks": "притяжательная конструкция не различает отчуждаемую и неотчуждаемую принадлежность",
+      "note": "Части тела и родственники («моя рука») оформляются иначе, чем имущество («мой нож»)."
+    }
+  },
+  {
+    "id": "GB065",
+    "original": "What is the pragmatically unmarked order of adnominal possessor noun and possessed noun?",
+    "original_values": {
+      "1": "Possessor-Possessed",
+      "2": "Possessed-Possessor",
+      "3": "both"
+    },
+    "en": {
+      "values": {
+        "1": "puts the possessor before the possessed noun ('John's house')",
+        "2": "puts the possessor after the possessed noun ('house of John')",
+        "3": "allows the possessor both before and after the possessed noun"
+      }
+    },
+    "ru": {
+      "values": {
+        "1": "обладатель стоит перед обладаемым («Ивана дом»)",
+        "2": "обладатель стоит после обладаемого («дом Ивана»)",
+        "3": "обладатель может стоять и перед обладаемым, и после него"
+      },
+      "note": "Прагматически нейтральный порядок именного обладателя и обладаемого."
+    }
+  },
+  {
+    "id": "GB068",
+    "original": "Do core adjectives (defined semantically as property concepts such as value, shape, age, dimension) act like verbs in predicative position?",
+    "en": {
+      "has": "has core adjectives that behave like verbs when used as predicates",
+      "lacks": "has core adjectives that do not behave like verbs as predicates"
+    },
+    "ru": {
+      "has": "основные прилагательные в позиции сказуемого ведут себя как глаголы",
+      "lacks": "основные прилагательные в позиции сказуемого не ведут себя как глаголы",
+      "note": "Свойства вроде «большой», «новый», «хороший» спрягаются как глаголы без связки: «дом большеет» вместо «дом большой»."
+    }
+  },
+  {
+    "id": "GB069",
+    "original": "Do core adjectives (defined semantically as property concepts; value, shape, age, dimension) used attributively require the same morphological treatment as verbs?",
+    "en": {
+      "has": "treats attributive adjectives morphologically like verbs",
+      "lacks": "does not treat attributive adjectives like verbs"
+    },
+    "ru": {
+      "has": "основные прилагательные в роли определения оформляются так же, как глаголы",
+      "lacks": "прилагательные в роли определения оформляются не так, как глаголы",
+      "note": "Например, определение строится как относительное предложение с глаголом: «дом, который большой»."
+    }
+  },
+  {
+    "id": "GB070",
+    "original": "Are there morphological cases for non-pronominal core arguments (i.e. S/A/P)?",
+    "en": {
+      "has": "has morphological case on (non-pronoun) subjects and objects",
+      "lacks": "has no morphological case on (non-pronoun) subjects and objects"
+    },
+    "ru": {
+      "has": "у полных именных групп есть морфологические падежи для подлежащего/прямого дополнения",
+      "lacks": "у полных именных групп нет морфологических падежей для ядерных актантов",
+      "note": "Как русские «мама» / «маму»; учитываются только существительные, не местоимения."
+    }
+  },
+  {
+    "id": "GB071",
+    "original": "Are there morphological cases for pronominal core arguments (i.e. S/A/P)?",
+    "en": {
+      "has": "has morphological case on pronouns as subjects and objects",
+      "lacks": "has no morphological case on pronouns as subjects and objects"
+    },
+    "ru": {
+      "has": "у местоимений есть морфологические падежи для подлежащего/прямого дополнения",
+      "lacks": "у местоимений нет падежных форм для ядерных актантов",
+      "note": "Как англ. I / me, he / him."
+    }
+  },
+  {
+    "id": "GB072",
+    "original": "Are there morphological cases for oblique non-pronominal NPs (i.e. not S/A/P)?",
+    "en": {
+      "has": "has morphological case for oblique (non-core) nouns",
+      "lacks": "has no morphological case for oblique nouns"
+    },
+    "ru": {
+      "has": "у полных именных групп есть косвенные морфологические падежи (не для подлежащего и дополнения)",
+      "lacks": "у полных именных групп нет косвенных морфологических падежей",
+      "note": "Например, местные, орудийный падежи: «в доме», «ножом»."
+    }
+  },
+  {
+    "id": "GB073",
+    "original": "Are there morphological cases for independent oblique personal pronominal arguments (i.e. not S/A/P)?",
+    "en": {
+      "has": "has morphological case for oblique pronouns",
+      "lacks": "has no morphological case for oblique pronouns"
+    },
+    "ru": {
+      "has": "у личных местоимений есть косвенные морфологические падежи",
+      "lacks": "у личных местоимений нет косвенных падежей",
+      "note": "Например, «со мной», «мною» — особые формы местоимения в непрямых ролях."
+    }
+  },
+  {
+    "id": "GB074",
+    "original": "Are there prepositions?",
+    "en": {
+      "has": "has prepositions",
+      "lacks": "has no prepositions"
+    },
+    "ru": {
+      "has": "есть предлоги",
+      "lacks": "нет предлогов",
+      "note": "Служебные слова, стоящие перед именем: «в доме»."
+    }
+  },
+  {
+    "id": "GB075",
+    "original": "Are there postpositions?",
+    "en": {
+      "has": "has postpositions",
+      "lacks": "has no postpositions"
+    },
+    "ru": {
+      "has": "есть послелоги",
+      "lacks": "нет послелогов",
+      "note": "Служебные слова, стоящие после имени: тур. ev için «для дома»."
+    }
+  },
+  {
+    "id": "GB079",
+    "original": "Do verbs have prefixes/proclitics, other than those that only mark A, S or P (do include portmanteau: A & S + TAM)?",
+    "en": {
+      "has": "has verb prefixes other than pure person markers",
+      "lacks": "has no verb prefixes other than pure person markers"
+    },
+    "ru": {
+      "has": "у глагола есть префиксы/проклитики помимо чисто личных показателей",
+      "lacks": "у глагола нет префиксов, кроме чисто личных показателей",
+      "note": "Учитываются префиксы времени, вида, направления и т. п., включая совмещённые с лицом."
+    }
+  },
+  {
+    "id": "GB080",
+    "original": "Do verbs have suffixes/enclitics, other than those that only mark A, S or P (do include portmanteau: A & S + TAM)?",
+    "en": {
+      "has": "has verb suffixes other than pure person markers",
+      "lacks": "has no verb suffixes other than pure person markers"
+    },
+    "ru": {
+      "has": "у глагола есть суффиксы/энклитики помимо чисто личных показателей",
+      "lacks": "у глагола нет суффиксов, кроме чисто личных показателей",
+      "note": "Учитываются суффиксы времени, вида, наклонения и т. п., включая совмещённые с лицом."
+    }
+  },
+  {
+    "id": "GB081",
+    "original": "Is there productive infixation in verbs?",
+    "en": {
+      "has": "has productive infixes in verbs",
+      "lacks": "has no productive infixes in verbs"
+    },
+    "ru": {
+      "has": "в глаголе есть продуктивная инфиксация",
+      "lacks": "нет продуктивной инфиксации в глаголе",
+      "note": "Инфикс вставляется внутрь корня: тагальск. sulat → s-um-ulat."
+    }
+  },
+  {
+    "id": "GB082",
+    "original": "Is there overt morphological marking of present tense on verbs?",
+    "en": {
+      "has": "marks present tense on the verb",
+      "lacks": "does not mark present tense on the verb"
+    },
+    "ru": {
+      "has": "настоящее время маркируется на глаголе особым показателем",
+      "lacks": "настоящее время на глаголе особо не маркируется",
+      "note": "Нужен выделенный морфологический показатель настоящего времени."
+    }
+  },
+  {
+    "id": "GB083",
+    "original": "Is there overt morphological marking on the verb dedicated to past tense?",
+    "en": {
+      "has": "has a dedicated past-tense marker on the verb",
+      "lacks": "has no dedicated past-tense marker on the verb"
+    },
+    "ru": {
+      "has": "есть специальный морфологический показатель прошедшего времени на глаголе",
+      "lacks": "нет специального показателя прошедшего времени на глаголе",
+      "note": "Показатель должен выражать именно прошедшее время (а не, скажем, только перфектив)."
+    }
+  },
+  {
+    "id": "GB084",
+    "original": "Is there overt morphological marking on the verb dedicated to future tense?",
+    "en": {
+      "has": "has a dedicated future-tense marker on the verb",
+      "lacks": "has no dedicated future-tense marker on the verb"
+    },
+    "ru": {
+      "has": "есть специальный морфологический показатель будущего времени на глаголе",
+      "lacks": "нет специального показателя будущего времени на глаголе",
+      "note": "Вспомогательные слова вроде англ. will не учитываются — только морфология глагола."
+    }
+  },
+  {
+    "id": "GB086",
+    "original": "Is a morphological distinction between perfective and imperfective aspect available on verbs?",
+    "en": {
+      "has": "distinguishes perfective and imperfective aspect morphologically",
+      "lacks": "has no morphological perfective/imperfective distinction"
+    },
+    "ru": {
+      "has": "на глаголе морфологически различаются совершенный и несовершенный вид",
+      "lacks": "нет морфологического противопоставления совершенного и несовершенного вида",
+      "note": "Как русские «написал» / «писал»."
+    }
+  },
+  {
+    "id": "GB089",
+    "original": "Can the S argument be indexed by a suffix/enclitic on the verb in the simple main clause?",
+    "en": {
+      "has": "can mark the intransitive subject with a verb suffix",
+      "lacks": "cannot mark the intransitive subject with a verb suffix"
+    },
+    "ru": {
+      "has": "единственный актант непереходного глагола (S) может индексироваться суффиксом/энклитикой на глаголе",
+      "lacks": "S не индексируется суффиксом на глаголе",
+      "note": "Например, рус. «спл-ю», «спит»: суффикс выражает лицо подлежащего."
+    }
+  },
+  {
+    "id": "GB090",
+    "original": "Can the S argument be indexed by a prefix/proclitic on the verb in the simple main clause?",
+    "en": {
+      "has": "can mark the intransitive subject with a verb prefix",
+      "lacks": "cannot mark the intransitive subject with a verb prefix"
+    },
+    "ru": {
+      "has": "единственный актант непереходного глагола (S) может индексироваться префиксом/проклитикой на глаголе",
+      "lacks": "S не индексируется префиксом на глаголе",
+      "note": "Например, суахили ni-nalala «я сплю»."
+    }
+  },
+  {
+    "id": "GB091",
+    "original": "Can the A argument be indexed by a suffix/enclitic on the verb in the simple main clause?",
+    "en": {
+      "has": "can mark the transitive subject (agent) with a verb suffix",
+      "lacks": "cannot mark the agent with a verb suffix"
+    },
+    "ru": {
+      "has": "агенс переходного глагола (A) может индексироваться суффиксом/энклитикой на глаголе",
+      "lacks": "A не индексируется суффиксом на глаголе",
+      "note": "A — подлежащее переходного глагола («я» в «я вижу его»)."
+    }
+  },
+  {
+    "id": "GB092",
+    "original": "Can the A argument be indexed by a prefix/proclitic on the verb in the simple main clause?",
+    "en": {
+      "has": "can mark the transitive subject (agent) with a verb prefix",
+      "lacks": "cannot mark the agent with a verb prefix"
+    },
+    "ru": {
+      "has": "агенс переходного глагола (A) может индексироваться префиксом/проклитикой на глаголе",
+      "lacks": "A не индексируется префиксом на глаголе",
+      "note": "A — подлежащее переходного глагола."
+    }
+  },
+  {
+    "id": "GB093",
+    "original": "Can the P argument be indexed by a suffix/enclitic on the verb in the simple main clause?",
+    "en": {
+      "has": "can mark the object (patient) with a verb suffix",
+      "lacks": "cannot mark the object with a verb suffix"
+    },
+    "ru": {
+      "has": "пациенс переходного глагола (P) может индексироваться суффиксом/энклитикой на глаголе",
+      "lacks": "P не индексируется суффиксом на глаголе",
+      "note": "P — прямое дополнение («его» в «я вижу его»)."
+    }
+  },
+  {
+    "id": "GB094",
+    "original": "Can the P argument be indexed by a prefix/proclitic on the verb in the simple main clause?",
+    "en": {
+      "has": "can mark the object (patient) with a verb prefix",
+      "lacks": "cannot mark the object with a verb prefix"
+    },
+    "ru": {
+      "has": "пациенс переходного глагола (P) может индексироваться префиксом/проклитикой на глаголе",
+      "lacks": "P не индексируется префиксом на глаголе",
+      "note": "P — прямое дополнение."
+    }
+  },
+  {
+    "id": "GB095",
+    "original": "Are variations in marking strategies of core participants based on TAM distinctions?",
+    "en": {
+      "has": "marks subjects and objects differently depending on tense/aspect/mood",
+      "lacks": "does not vary argument marking by tense/aspect/mood"
+    },
+    "ru": {
+      "has": "способ маркирования ядерных актантов зависит от времени, вида или наклонения",
+      "lacks": "маркирование ядерных актантов не зависит от времени/вида/наклонения",
+      "note": "Классический пример — расщеплённая эргативность: в прошедшем времени эргативное оформление, в настоящем — номинативное (хинди, грузинский)."
+    }
+  },
+  {
+    "id": "GB096",
+    "original": "Are variations in marking strategies of core participants based on verb classes?",
+    "en": {
+      "has": "marks subjects and objects differently depending on verb class",
+      "lacks": "does not vary argument marking by verb class"
+    },
+    "ru": {
+      "has": "способ маркирования ядерных актантов зависит от класса глагола",
+      "lacks": "маркирование ядерных актантов не зависит от класса глагола",
+      "note": "Например, у одних непереходных глаголов подлежащее оформляется как агенс, у других — как пациенс (активный строй)."
+    }
+  },
+  {
+    "id": "GB098",
+    "original": "Are variations in marking strategies of core participants based on person distinctions?",
+    "en": {
+      "has": "marks subjects and objects differently depending on person",
+      "lacks": "does not vary argument marking by person"
+    },
+    "ru": {
+      "has": "способ маркирования ядерных актантов зависит от лица",
+      "lacks": "маркирование ядерных актантов не зависит от лица",
+      "note": "Например, местоимения 1–2-го лица имеют номинативное оформление, а существительные — эргативное."
+    }
+  },
+  {
+    "id": "GB099",
+    "original": "Can verb stems alter according to the person of a core participant?",
+    "en": {
+      "has": "has verb stems that change with the person of a core participant",
+      "lacks": "has no verb stems that change with person"
+    },
+    "ru": {
+      "has": "основа глагола может меняться в зависимости от лица ядерного участника",
+      "lacks": "основа глагола не меняется в зависимости от лица",
+      "note": "Речь о чередованиях самой основы (а не просто о присоединении личных аффиксов)."
+    }
+  },
+  {
+    "id": "GB103",
+    "original": "Is there a benefactive applicative marker on the verb (including indexing)?",
+    "en": {
+      "has": "has a benefactive applicative on the verb",
+      "lacks": "has no benefactive applicative"
+    },
+    "ru": {
+      "has": "есть бенефактивный аппликатив (показатель на глаголе, вводящий того, в чьих интересах действие)",
+      "lacks": "нет бенефактивного аппликатива",
+      "note": "Аппликатив делает бенефицианта («для кого») полноценным дополнением глагола: суахили -pik-i-a «готовить для»."
+    }
+  },
+  {
+    "id": "GB104",
+    "original": "Is there an instrumental applicative marker on the verb (including indexing)?",
+    "en": {
+      "has": "has an instrumental applicative on the verb",
+      "lacks": "has no instrumental applicative"
+    },
+    "ru": {
+      "has": "есть инструментальный аппликатив (показатель на глаголе, вводящий инструмент)",
+      "lacks": "нет инструментального аппликатива",
+      "note": "Аппликатив делает инструмент («чем») дополнением глагола."
+    }
+  },
+  {
+    "id": "GB105",
+    "original": "Can the recipient in a ditransitive construction be marked like the monotransitive patient?",
+    "en": {
+      "has": "can mark the recipient like a direct object",
+      "lacks": "cannot mark the recipient like a direct object"
+    },
+    "ru": {
+      "has": "получатель в дитранзитивной конструкции может оформляться как прямое дополнение одноместного переходного глагола",
+      "lacks": "получатель не может оформляться как прямое дополнение",
+      "note": "Как англ. I gave him a book: him оформлен так же, как дополнение в I saw him."
+    }
+  },
+  {
+    "id": "GB107",
+    "original": "Can standard negation be marked by an affix, clitic or modification of the verb?",
+    "en": {
+      "has": "can mark negation on the verb (affix, clitic or verb change)",
+      "lacks": "cannot mark negation on the verb itself"
+    },
+    "ru": {
+      "has": "стандартное отрицание может выражаться аффиксом, клитикой или изменением глагола",
+      "lacks": "стандартное отрицание не выражается на самом глаголе",
+      "note": "Например, тур. gel-me-di «не пришёл»."
+    }
+  },
+  {
+    "id": "GB108",
+    "original": "Is there directional or locative morphological marking on verbs?",
+    "en": {
+      "has": "has directional or locative marking on verbs",
+      "lacks": "has no directional or locative marking on verbs"
+    },
+    "ru": {
+      "has": "на глаголе есть показатели направления или места",
+      "lacks": "на глаголе нет показателей направления или места",
+      "note": "Например, глагольные показатели «сюда / туда», «вверх / вниз»."
+    }
+  },
+  {
+    "id": "GB109",
+    "original": "Is there verb suppletion for participant number?",
+    "en": {
+      "has": "has verbs that change root depending on the number of participants",
+      "lacks": "has no verb suppletion for participant number"
+    },
+    "ru": {
+      "has": "есть глаголы с супплетивными основами в зависимости от числа участников",
+      "lacks": "нет супплетивизма глагола по числу участников",
+      "note": "Например, разные корни для «один сидит» и «многие сидят»."
+    }
+  },
+  {
+    "id": "GB110",
+    "original": "Is there verb suppletion for tense or aspect?",
+    "en": {
+      "has": "has verbs with suppletive forms for tense or aspect (like 'go' / 'went')",
+      "lacks": "has no verb suppletion for tense or aspect"
+    },
+    "ru": {
+      "has": "есть глаголы с супплетивными формами времени или вида (как «идти» — «шёл»)",
+      "lacks": "нет супплетивизма глагола по времени или виду",
+      "note": "Супплетивизм — формы от разных корней."
+    }
+  },
+  {
+    "id": "GB111",
+    "original": "Are there conjugation classes?",
+    "en": {
+      "has": "has conjugation classes",
+      "lacks": "has no conjugation classes"
+    },
+    "ru": {
+      "has": "есть типы спряжения",
+      "lacks": "нет типов спряжения",
+      "note": "Глаголы делятся на классы с разными наборами окончаний, как первое и второе спряжение в русском."
+    }
+  },
+  {
+    "id": "GB113",
+    "original": "Are there verbal affixes or clitics that turn intransitive verbs into transitive ones?",
+    "en": {
+      "has": "has verb affixes that make intransitive verbs transitive",
+      "lacks": "has no affixes that make intransitive verbs transitive"
+    },
+    "ru": {
+      "has": "есть глагольные аффиксы или клитики, превращающие непереходный глагол в переходный",
+      "lacks": "нет аффиксов, превращающих непереходный глагол в переходный",
+      "note": "Каузативы, аппликативы и т. п.: «сохнуть» → «сушить» морфологическим способом."
+    }
+  },
+  {
+    "id": "GB114",
+    "original": "Is there a phonologically bound reflexive marker on the verb?",
+    "en": {
+      "has": "has a reflexive marker bound to the verb",
+      "lacks": "has no bound reflexive marker on the verb"
+    },
+    "ru": {
+      "has": "есть возвратный показатель, присоединяемый к глаголу",
+      "lacks": "нет связанного возвратного показателя на глаголе",
+      "note": "Как рус. -ся в «мыться»."
+    }
+  },
+  {
+    "id": "GB115",
+    "original": "Is there a phonologically bound reciprocal marker on the verb?",
+    "en": {
+      "has": "has a reciprocal marker bound to the verb",
+      "lacks": "has no bound reciprocal marker on the verb"
+    },
+    "ru": {
+      "has": "есть взаимный (реципрокальный) показатель, присоединяемый к глаголу",
+      "lacks": "нет связанного реципрокального показателя на глаголе",
+      "note": "Показатель значения «друг друга» внутри глагольной словоформы."
+    }
+  },
+  {
+    "id": "GB116",
+    "original": "Do verbs classify the shape, size or consistency of absolutive arguments by means of incorporated nouns, verbal affixes or suppletive verb stems?",
+    "en": {
+      "has": "has verbs that classify the shape, size or consistency of the object/intransitive subject",
+      "lacks": "has no such classificatory verbs"
+    },
+    "ru": {
+      "has": "глаголы классифицируют форму, размер или консистенцию абсолютивного участника (с помощью инкорпорации, аффиксов или супплетивных основ)",
+      "lacks": "нет классифицирующих глаголов",
+      "note": "Классический пример — атабаскские языки: разные глаголы «дать» для круглого, длинного или жидкого предмета."
+    }
+  },
+  {
+    "id": "GB117",
+    "original": "Is there a copula for predicate nominals?",
+    "en": {
+      "has": "has a copula for predicate nominals",
+      "lacks": "has no copula for predicate nominals"
+    },
+    "ru": {
+      "has": "есть связка в именном сказуемом («X есть Y»)",
+      "lacks": "нет связки в именном сказуемом",
+      "note": "Связка — служебный глагол вроде англ. be в He is a teacher."
+    }
+  },
+  {
+    "id": "GB118",
+    "original": "Are there serial verb constructions?",
+    "en": {
+      "has": "has serial verb constructions",
+      "lacks": "has no serial verb constructions"
+    },
+    "ru": {
+      "has": "есть сериальные глагольные конструкции",
+      "lacks": "нет сериальных глагольных конструкций",
+      "note": "Несколько глаголов подряд образуют одно сказуемое без союзов: йоруба «взять нож резать» = «резать ножом»."
+    }
+  },
+  {
+    "id": "GB119",
+    "original": "Can mood be marked by an inflecting word (\"auxiliary verb\")?",
+    "en": {
+      "has": "can mark mood with an inflecting auxiliary verb",
+      "lacks": "cannot mark mood with an inflecting auxiliary"
+    },
+    "ru": {
+      "has": "наклонение может выражаться изменяемым вспомогательным глаголом",
+      "lacks": "наклонение не выражается изменяемым вспомогательным глаголом",
+      "note": "Вспомогательный глагол сам принимает личные или временные показатели."
+    }
+  },
+  {
+    "id": "GB120",
+    "original": "Can aspect be marked by an inflecting word (\"auxiliary verb\")?",
+    "en": {
+      "has": "can mark aspect with an inflecting auxiliary verb",
+      "lacks": "cannot mark aspect with an inflecting auxiliary"
+    },
+    "ru": {
+      "has": "вид может выражаться изменяемым вспомогательным глаголом",
+      "lacks": "вид не выражается изменяемым вспомогательным глаголом",
+      "note": "Как англ. be в I am reading."
+    }
+  },
+  {
+    "id": "GB121",
+    "original": "Can tense be marked by an inflecting word (\"auxiliary verb\")?",
+    "en": {
+      "has": "can mark tense with an inflecting auxiliary verb",
+      "lacks": "cannot mark tense with an inflecting auxiliary"
+    },
+    "ru": {
+      "has": "время может выражаться изменяемым вспомогательным глаголом",
+      "lacks": "время не выражается изменяемым вспомогательным глаголом",
+      "note": "Как рус. «буду» в «буду читать»."
+    }
+  },
+  {
+    "id": "GB122",
+    "original": "Is verb compounding a regular process?",
+    "en": {
+      "has": "regularly forms compound verbs",
+      "lacks": "does not regularly form compound verbs"
+    },
+    "ru": {
+      "has": "словосложение глаголов — регулярный процесс",
+      "lacks": "словосложение глаголов не является регулярным процессом",
+      "note": "Глагольные композиты из двух глагольных корней."
+    }
+  },
+  {
+    "id": "GB123",
+    "original": "Are there verb-adjunct (aka light-verb) constructions?",
+    "en": {
+      "has": "has light-verb (verb–adjunct) constructions",
+      "lacks": "has no light-verb constructions"
+    },
+    "ru": {
+      "has": "есть конструкции с «лёгким» глаголом (глагол + адъюнкт)",
+      "lacks": "нет конструкций с лёгким глаголом",
+      "note": "Значение несёт имя, а глагол вроде «делать/давать» лишь служебный: перс. kār kardan «работать» (букв. «работу делать»)."
+    }
+  },
+  {
+    "id": "GB124",
+    "original": "Is incorporation of nouns into verbs a productive intransitivizing process?",
+    "en": {
+      "has": "productively incorporates nouns into verbs to make them intransitive",
+      "lacks": "has no productive intransitivizing noun incorporation"
+    },
+    "ru": {
+      "has": "инкорпорация существительного в глагол — продуктивный способ понижения переходности",
+      "lacks": "нет продуктивной инкорпорации с понижением переходности",
+      "note": "Как англ. to babysit: дополнение становится частью глагола."
+    }
+  },
+  {
+    "id": "GB126",
+    "original": "Is there an existential verb?",
+    "en": {
+      "has": "has an existential verb ('there is')",
+      "lacks": "has no existential verb"
+    },
+    "ru": {
+      "has": "есть экзистенциальный глагол («имеется»)",
+      "lacks": "нет экзистенциального глагола",
+      "note": "Особый глагол для «есть, существует»: исп. hay."
+    }
+  },
+  {
+    "id": "GB127",
+    "original": "Are different posture verbs used obligatorily depending on an inanimate locatum's shape or position (e.g. 'to lie' vs. 'to stand')?",
+    "en": {
+      "has": "must use different posture verbs ('lie', 'stand', 'sit') for objects by shape or position",
+      "lacks": "does not require posture verbs for inanimate objects"
+    },
+    "ru": {
+      "has": "для неодушевлённых предметов обязательно выбираются разные глаголы положения («лежать», «стоять») по их форме или положению",
+      "lacks": "выбор глаголов положения для неодушевлённых предметов не обязателен",
+      "note": "Как в немецком или голландском: книга на столе обязательно «лежит», а бутылка — «стоит»."
+    }
+  },
+  {
+    "id": "GB129",
+    "original": "Is there a notably small number, i.e. about 100 or less, of verb roots in the language?",
+    "en": {
+      "has": "has a notably small number of verb roots (about 100 or fewer)",
+      "lacks": "does not have a notably small set of verb roots"
+    },
+    "ru": {
+      "has": "необычно мало глагольных корней (около 100 или меньше)",
+      "lacks": "нет ограничения на малое число глагольных корней",
+      "note": "Типично для ряда языков Австралии и Новой Гвинеи, где сложные значения передаются сочетаниями с немногими глаголами."
+    }
+  },
+  {
+    "id": "GB130",
+    "original": "What is the pragmatically unmarked order of S and V in intransitive clauses?",
+    "original_values": {
+      "1": "SV",
+      "2": "VS",
+      "3": "both"
+    },
+    "en": {
+      "values": {
+        "1": "puts the subject before the verb in intransitive clauses ('the dog sleeps')",
+        "2": "puts the subject after the verb in intransitive clauses ('sleeps the dog')",
+        "3": "allows the intransitive subject both before and after the verb"
+      }
+    },
+    "ru": {
+      "values": {
+        "1": "в непереходной клаузе подлежащее стоит перед глаголом («собака спит»)",
+        "2": "в непереходной клаузе подлежащее стоит после глагола («спит собака»)",
+        "3": "в непереходной клаузе подлежащее может стоять и до, и после глагола"
+      },
+      "note": "Прагматически нейтральный порядок подлежащего (S) и глагола в непереходной клаузе."
+    }
+  },
+  {
+    "id": "GB131",
+    "original": "Is a pragmatically unmarked constituent order verb-initial for transitive clauses?",
+    "en": {
+      "has": "is verb-initial in neutral transitive clauses",
+      "lacks": "is not verb-initial in neutral transitive clauses"
+    },
+    "ru": {
+      "has": "нейтральный порядок слов в переходной клаузе — с глаголом в начале (VSO/VOS)",
+      "lacks": "нейтральный порядок слов в переходной клаузе — не с глаголом в начале",
+      "note": "Например, ирландский или тагальский."
+    }
+  },
+  {
+    "id": "GB132",
+    "original": "Is a pragmatically unmarked constituent order verb-medial for transitive clauses?",
+    "en": {
+      "has": "is verb-medial in neutral transitive clauses",
+      "lacks": "is not verb-medial in neutral transitive clauses"
+    },
+    "ru": {
+      "has": "нейтральный порядок слов в переходной клаузе — с глаголом в середине (SVO/OVS)",
+      "lacks": "нейтральный порядок слов в переходной клаузе — не с глаголом в середине",
+      "note": "Например, английский или суахили."
+    }
+  },
+  {
+    "id": "GB133",
+    "original": "Is a pragmatically unmarked constituent order verb-final for transitive clauses?",
+    "en": {
+      "has": "is verb-final in neutral transitive clauses",
+      "lacks": "is not verb-final in neutral transitive clauses"
+    },
+    "ru": {
+      "has": "нейтральный порядок слов в переходной клаузе — с глаголом в конце (SOV/OSV)",
+      "lacks": "нейтральный порядок слов в переходной клаузе — не с глаголом в конце",
+      "note": "Например, японский или турецкий."
+    }
+  },
+  {
+    "id": "GB134",
+    "original": "Is the order of constituents the same in main and subordinate clauses?",
+    "en": {
+      "has": "uses the same word order in main and subordinate clauses",
+      "lacks": "uses different word orders in main and subordinate clauses"
+    },
+    "ru": {
+      "has": "порядок слов в главной и придаточной клаузах одинаков",
+      "lacks": "порядок слов в главной и придаточной клаузах различается",
+      "note": "Как в немецком, где глагол в придаточном уходит в конец, — это пример различия."
+    }
+  },
+  {
+    "id": "GB135",
+    "original": "Do clausal objects usually occur in the same position as nominal objects?",
+    "en": {
+      "has": "puts clausal objects in the same position as noun objects",
+      "lacks": "puts clausal objects in a different position from noun objects"
+    },
+    "ru": {
+      "has": "придаточные-дополнения обычно стоят там же, где именные дополнения",
+      "lacks": "придаточные-дополнения обычно стоят не там, где именные дополнения",
+      "note": "Например, в языках SOV придаточное-дополнение часто выносится в конец, после глагола."
+    }
+  },
+  {
+    "id": "GB136",
+    "original": "Is the order of core argument (i.e. S/A/P) constituents fixed?",
+    "en": {
+      "has": "has a fixed order of subject and object",
+      "lacks": "has a free order of subject and object"
+    },
+    "ru": {
+      "has": "порядок ядерных актантов (подлежащего и дополнения) фиксирован",
+      "lacks": "порядок ядерных актантов не фиксирован",
+      "note": "В английском он фиксирован; в русском — относительно свободен."
+    }
+  },
+  {
+    "id": "GB137",
+    "original": "Can standard negation be marked clause-finally?",
+    "en": {
+      "has": "can mark negation at the end of the clause",
+      "lacks": "cannot mark negation at the end of the clause"
+    },
+    "ru": {
+      "has": "стандартное отрицание может стоять в конце клаузы",
+      "lacks": "стандартное отрицание не стоит в конце клаузы",
+      "note": "Например, отрицательная частица в конце предложения, как в ряде языков Африки и Амазонии."
+    }
+  },
+  {
+    "id": "GB138",
+    "original": "Can standard negation be marked clause-initially?",
+    "en": {
+      "has": "can mark negation at the beginning of the clause",
+      "lacks": "cannot mark negation at the beginning of the clause"
+    },
+    "ru": {
+      "has": "стандартное отрицание может стоять в начале клаузы",
+      "lacks": "стандартное отрицание не стоит в начале клаузы",
+      "note": "Отрицательный показатель в абсолютном начале предложения."
+    }
+  },
+  {
+    "id": "GB139",
+    "original": "Is there a difference between imperative (prohibitive) and declarative negation constructions?",
+    "en": {
+      "has": "negates commands (prohibitives) differently from statements",
+      "lacks": "negates commands and statements the same way"
+    },
+    "ru": {
+      "has": "запрет (отрицательный императив) строится иначе, чем отрицание в повествовательном предложении",
+      "lacks": "запрет строится так же, как отрицание в повествовательном предложении",
+      "note": "Например, лат. noli + инфинитив vs. non в утверждении."
+    }
+  },
+  {
+    "id": "GB140",
+    "original": "Is verbal predication marked by the same negator as all of the following types of predication: locational, existential and nominal?",
+    "en": {
+      "has": "uses the same negator for verbal, locational, existential and nominal predicates",
+      "lacks": "uses different negators for different predicate types"
+    },
+    "ru": {
+      "has": "одно и то же отрицание используется в глагольном, локативном, экзистенциальном и именном сказуемом",
+      "lacks": "в разных типах сказуемых используются разные отрицания",
+      "note": "Многие языки имеют особое отрицание для «нет, не существует», отличное от «не делает»."
+    }
+  },
+  {
+    "id": "GB146",
+    "original": "Is there a morpho-syntactic distinction between predicates expressing controlled versus uncontrolled events or states?",
+    "en": {
+      "has": "distinguishes controlled and uncontrolled events grammatically",
+      "lacks": "does not distinguish controlled and uncontrolled events"
+    },
+    "ru": {
+      "has": "грамматически различаются контролируемые и неконтролируемые ситуации",
+      "lacks": "контролируемые и неконтролируемые ситуации грамматически не различаются",
+      "note": "Например, разное оформление для «я упал (нечаянно)» и «я лёг (намеренно)»."
+    }
+  },
+  {
+    "id": "GB147",
+    "original": "Is there a morphological passive marked on the lexical verb?",
+    "en": {
+      "has": "has a morphological passive on the verb",
+      "lacks": "has no morphological passive on the verb"
+    },
+    "ru": {
+      "has": "есть морфологический пассив на лексическом глаголе",
+      "lacks": "нет морфологического пассива на лексическом глаголе",
+      "note": "Как лат. amatur «его любят» или рус. «строится» в пассивном значении."
+    }
+  },
+  {
+    "id": "GB148",
+    "original": "Is there a morphological antipassive marked on the lexical verb?",
+    "en": {
+      "has": "has a morphological antipassive on the verb",
+      "lacks": "has no morphological antipassive"
+    },
+    "ru": {
+      "has": "есть морфологический антипассив на глаголе",
+      "lacks": "нет морфологического антипассива",
+      "note": "Антипассив понижает пациенса: переходный глагол «есть (что-то)» превращается в непереходное «заниматься едой». Типичен для эргативных языков."
+    }
+  },
+  {
+    "id": "GB149",
+    "original": "Is there a morphologically marked inverse on verbs?",
+    "en": {
+      "has": "has inverse marking on verbs",
+      "lacks": "has no inverse marking on verbs"
+    },
+    "ru": {
+      "has": "есть морфологически маркированный инверсив на глаголе",
+      "lacks": "нет инверсива на глаголе",
+      "note": "Глагол показывает, действует ли «более высокий» по иерархии участник на «более низкого» или наоборот (алгонкинские языки)."
+    }
+  },
+  {
+    "id": "GB150",
+    "original": "Is there clause chaining?",
+    "en": {
+      "has": "has clause chaining",
+      "lacks": "has no clause chaining"
+    },
+    "ru": {
+      "has": "есть цепочки клауз (clause chaining)",
+      "lacks": "нет цепочек клауз",
+      "note": "Длинные цепочки зависимых глагольных форм, завершающиеся одной финитной, — типично для Новой Гвинеи."
+    }
+  },
+  {
+    "id": "GB151",
+    "original": "Is there an overt verb marker dedicated to signalling coreference or noncoreference between the subject of one clause and an argument of an adjacent clause (\"switch reference\")?",
+    "en": {
+      "has": "has switch-reference marking",
+      "lacks": "has no switch-reference marking"
+    },
+    "ru": {
+      "has": "есть переключение референции (switch-reference)",
+      "lacks": "нет переключения референции",
+      "note": "Глагольный показатель сообщает, тот же ли субъект в следующей клаузе или другой."
+    }
+  },
+  {
+    "id": "GB152",
+    "original": "Is there a morphologically marked distinction between simultaneous and sequential clauses?",
+    "en": {
+      "has": "distinguishes simultaneous and sequential clauses morphologically",
+      "lacks": "does not distinguish simultaneous and sequential clauses morphologically"
+    },
+    "ru": {
+      "has": "морфологически различаются одновременные и последовательные действия в связанных клаузах",
+      "lacks": "одновременность и последовательность клауз морфологически не различаются",
+      "note": "Например, разные деепричастия для «делая» и «сделав»."
+    }
+  },
+  {
+    "id": "GB155",
+    "original": "Are causatives formed by affixes or clitics on verbs?",
+    "en": {
+      "has": "forms causatives with verb affixes or clitics",
+      "lacks": "does not form causatives with affixes or clitics"
+    },
+    "ru": {
+      "has": "каузатив образуется аффиксом или клитикой на глаголе",
+      "lacks": "каузатив не образуется аффиксом или клитикой",
+      "note": "Тур. öl-dür «убить» (букв. «заставить умереть»)."
+    }
+  },
+  {
+    "id": "GB156",
+    "original": "Is there a causative construction involving an element that is unmistakably grammaticalized from a verb for 'to say'?",
+    "en": {
+      "has": "has a causative built on a verb meaning 'say'",
+      "lacks": "has no causative built on 'say'"
+    },
+    "ru": {
+      "has": "есть каузативная конструкция с элементом, явно восходящим к глаголу «говорить»",
+      "lacks": "нет каузатива, восходящего к глаголу «говорить»",
+      "note": "Например, «я сказал ему уйти» как грамматикализованное «я заставил его уйти»."
+    }
+  },
+  {
+    "id": "GB158",
+    "original": "Are verbs reduplicated?",
+    "en": {
+      "has": "reduplicates verbs",
+      "lacks": "does not reduplicate verbs"
+    },
+    "ru": {
+      "has": "используется редупликация глаголов",
+      "lacks": "нет редупликации глаголов",
+      "note": "Повтор (части) глагольной основы, напр. для обозначения повторяемости или длительности."
+    }
+  },
+  {
+    "id": "GB159",
+    "original": "Are nouns reduplicated?",
+    "en": {
+      "has": "reduplicates nouns",
+      "lacks": "does not reduplicate nouns"
+    },
+    "ru": {
+      "has": "используется редупликация существительных",
+      "lacks": "нет редупликации существительных",
+      "note": "Индонез. orang-orang «люди»."
+    }
+  },
+  {
+    "id": "GB160",
+    "original": "Are elements apart from verbs or nouns reduplicated?",
+    "en": {
+      "has": "reduplicates words other than verbs and nouns",
+      "lacks": "does not reduplicate words other than verbs and nouns"
+    },
+    "ru": {
+      "has": "редуплицируются и другие слова, помимо глаголов и существительных",
+      "lacks": "другие слова, кроме глаголов и существительных, не редуплицируются",
+      "note": "Например, прилагательные или числительные («по одному»)."
+    }
+  },
+  {
+    "id": "GB165",
+    "original": "Is there productive morphological trial marking on nouns?",
+    "en": {
+      "has": "productively marks trial (number 'three') on nouns",
+      "lacks": "does not mark trial on nouns"
+    },
+    "ru": {
+      "has": "у существительных есть продуктивное тройственное число",
+      "lacks": "нет тройственного числа у существительных",
+      "note": "Особая форма для трёх предметов — большая редкость."
+    }
+  },
+  {
+    "id": "GB166",
+    "original": "Is there productive morphological paucal marking on nouns?",
+    "en": {
+      "has": "productively marks paucal ('a few') on nouns",
+      "lacks": "does not mark paucal on nouns"
+    },
+    "ru": {
+      "has": "у существительных есть продуктивное паукальное число («несколько»)",
+      "lacks": "нет паукального числа у существительных",
+      "note": "Паукал — форма для небольшого количества предметов."
+    }
+  },
+  {
+    "id": "GB167",
+    "original": "Is there a logophoric pronoun?",
+    "en": {
+      "has": "has a logophoric pronoun",
+      "lacks": "has no logophoric pronoun"
+    },
+    "ru": {
+      "has": "есть логофорическое местоимение",
+      "lacks": "нет логофорического местоимения",
+      "note": "Особое местоимение в косвенной речи, отсылающее к говорящему: «Он сказал, что СЕБЯ-ЛОГ уйдёт»."
+    }
+  },
+  {
+    "id": "GB170",
+    "original": "Can an adnominal property word agree with the noun in gender/noun class?",
+    "en": {
+      "has": "can make adjective-like words agree with the noun in gender/class",
+      "lacks": "has no gender/class agreement on adjective-like words"
+    },
+    "ru": {
+      "has": "слова-признаки (прилагательные) могут согласоваться с существительным по роду/классу",
+      "lacks": "прилагательные не согласуются с существительным по роду/классу",
+      "note": "Как «новый дом» — «новая книга»."
+    }
+  },
+  {
+    "id": "GB171",
+    "original": "Can an adnominal demonstrative agree with the noun in gender/noun class?",
+    "en": {
+      "has": "can make demonstratives agree with the noun in gender/class",
+      "lacks": "has no gender/class agreement on demonstratives"
+    },
+    "ru": {
+      "has": "указательные слова могут согласоваться с существительным по роду/классу",
+      "lacks": "указательные слова не согласуются по роду/классу",
+      "note": "Как «этот дом» — «эта книга»."
+    }
+  },
+  {
+    "id": "GB172",
+    "original": "Can an article agree with the noun in gender/noun class?",
+    "en": {
+      "has": "can make articles agree with the noun in gender/class",
+      "lacks": "has no gender/class agreement on articles"
+    },
+    "ru": {
+      "has": "артикли могут согласоваться с существительным по роду/классу",
+      "lacks": "артикли не согласуются по роду/классу (или их нет)",
+      "note": "Как фр. le livre — la table."
+    }
+  },
+  {
+    "id": "GB177",
+    "original": "Can the verb carry a marker of animacy of argument, unrelated to any gender/noun class of the argument visible in the NP domain?",
+    "en": {
+      "has": "can mark the animacy of a participant on the verb",
+      "lacks": "does not mark participant animacy on the verb"
+    },
+    "ru": {
+      "has": "глагол может нести показатель одушевлённости участника, не связанный с его именным классом",
+      "lacks": "глагол не маркирует одушевлённость участника",
+      "note": "Показатель одушевлённости на глаголе, независимый от системы рода/классов в именной группе."
+    }
+  },
+  {
+    "id": "GB184",
+    "original": "Can an adnominal property word agree with the noun in number?",
+    "en": {
+      "has": "can make adjective-like words agree with the noun in number",
+      "lacks": "has no number agreement on adjective-like words"
+    },
+    "ru": {
+      "has": "слова-признаки могут согласоваться с существительным по числу",
+      "lacks": "прилагательные не согласуются с существительным по числу",
+      "note": "Как «новый дом» — «новые дома»."
+    }
+  },
+  {
+    "id": "GB185",
+    "original": "Can an adnominal demonstrative agree with the noun in number?",
+    "en": {
+      "has": "can make demonstratives agree with the noun in number",
+      "lacks": "has no number agreement on demonstratives"
+    },
+    "ru": {
+      "has": "указательные слова могут согласоваться с существительным по числу",
+      "lacks": "указательные слова не согласуются по числу",
+      "note": "Как англ. this book — these books."
+    }
+  },
+  {
+    "id": "GB186",
+    "original": "Can an article agree with the noun in number?",
+    "en": {
+      "has": "can make articles agree with the noun in number",
+      "lacks": "has no number agreement on articles"
+    },
+    "ru": {
+      "has": "артикли могут согласоваться с существительным по числу",
+      "lacks": "артикли не согласуются по числу (или их нет)",
+      "note": "Как исп. el libro — los libros."
+    }
+  },
+  {
+    "id": "GB187",
+    "original": "Is there any productive diminutive marking on the noun (exclude marking by system of nominal classification only)?",
+    "en": {
+      "has": "has productive diminutive marking on nouns",
+      "lacks": "has no productive diminutive marking on nouns"
+    },
+    "ru": {
+      "has": "есть продуктивное уменьшительное оформление существительных",
+      "lacks": "нет продуктивного уменьшительного оформления существительных",
+      "note": "Как рус. «дом» → «домик»; смена именного класса здесь не учитывается."
+    }
+  },
+  {
+    "id": "GB188",
+    "original": "Is there any productive augmentative marking on the noun (exclude marking by system of nominal classification only)?",
+    "en": {
+      "has": "has productive augmentative marking on nouns",
+      "lacks": "has no productive augmentative marking on nouns"
+    },
+    "ru": {
+      "has": "есть продуктивное увеличительное оформление существительных",
+      "lacks": "нет продуктивного увеличительного оформления существительных",
+      "note": "Как рус. «дом» → «домище»; смена именного класса здесь не учитывается."
+    }
+  },
+  {
+    "id": "GB192",
+    "original": "Is there a gender system where a noun's phonological properties are a factor in class assignment?",
+    "en": {
+      "has": "assigns gender/noun class partly by the sound of the noun",
+      "lacks": "does not assign gender by the sound of the noun"
+    },
+    "ru": {
+      "has": "род/класс существительного частично определяется его звучанием",
+      "lacks": "род/класс не определяется звучанием существительного",
+      "note": "Как в русском, где слова на -а обычно женского рода."
+    }
+  },
+  {
+    "id": "GB193",
+    "original": "What is the order of adnominal property word and noun?",
+    "original_values": {
+      "0": "they cannot be used attributively",
+      "1": "ANM - N",
+      "2": "N - ANM",
+      "3": "both"
+    },
+    "en": {
+      "values": {
+        "0": "cannot use adjective-like words directly as noun modifiers",
+        "1": "puts adjective-like words before the noun ('big house')",
+        "2": "puts adjective-like words after the noun ('house big')",
+        "3": "allows adjective-like words both before and after the noun"
+      }
+    },
+    "ru": {
+      "values": {
+        "0": "слова-признаки не могут непосредственно определять существительное",
+        "1": "слово-признак стоит перед существительным («большой дом»)",
+        "2": "слово-признак стоит после существительного («дом большой»)",
+        "3": "слово-признак может стоять и перед существительным, и после него"
+      },
+      "note": "Порядок прилагательного (слова-признака) и существительного в нейтральной именной группе."
+    }
+  },
+  {
+    "id": "GB196",
+    "original": "Is there a male/female distinction in 2nd person independent pronouns?",
+    "en": {
+      "has": "distinguishes male and female in 2nd-person pronouns",
+      "lacks": "has no male/female distinction in 2nd-person pronouns"
+    },
+    "ru": {
+      "has": "в местоимениях 2-го лица различается мужской и женский род",
+      "lacks": "в местоимениях 2-го лица род не различается",
+      "note": "Как араб. anta «ты (м.)» — anti «ты (ж.)»."
+    }
+  },
+  {
+    "id": "GB197",
+    "original": "Is there a male/female distinction in 1st person independent pronouns?",
+    "en": {
+      "has": "distinguishes male and female in 1st-person pronouns",
+      "lacks": "has no male/female distinction in 1st-person pronouns"
+    },
+    "ru": {
+      "has": "в местоимениях 1-го лица различается мужской и женский род",
+      "lacks": "в местоимениях 1-го лица род не различается",
+      "note": "Очень редкое явление: разные «я» для мужчин и женщин."
+    }
+  },
+  {
+    "id": "GB198",
+    "original": "Can an adnominal numeral agree with the noun in gender/noun class?",
+    "en": {
+      "has": "can make numerals agree with the noun in gender/class",
+      "lacks": "has no gender/class agreement on numerals"
+    },
+    "ru": {
+      "has": "числительные могут согласоваться с существительным по роду/классу",
+      "lacks": "числительные не согласуются по роду/классу",
+      "note": "Как рус. «два стола» — «две книги»."
+    }
+  },
+  {
+    "id": "GB203",
+    "original": "What is the order of the adnominal collective universal quantifier ('all') and the noun?",
+    "original_values": {
+      "0": "no UQ",
+      "1": "UQ-N",
+      "2": "N-UQ",
+      "3": "both"
+    },
+    "en": {
+      "values": {
+        "0": "has no adnominal word for 'all'",
+        "1": "puts 'all' before the noun ('all houses')",
+        "2": "puts 'all' after the noun ('houses all')",
+        "3": "allows 'all' both before and after the noun"
+      }
+    },
+    "ru": {
+      "values": {
+        "0": "нет приименного квантора «все»",
+        "1": "квантор «все» стоит перед существительным («все дома»)",
+        "2": "квантор «все» стоит после существительного («дома все»)",
+        "3": "квантор «все» может стоять и перед существительным, и после него"
+      },
+      "note": "Порядок собирательного квантора «все» и существительного."
+    }
+  },
+  {
+    "id": "GB204",
+    "original": "Do collective ('all') and distributive ('every') universal quantifiers differ in their forms or their syntactic positions?",
+    "en": {
+      "has": "has different forms or positions for 'all' and 'every'",
+      "lacks": "uses the same form and position for 'all' and 'every'"
+    },
+    "ru": {
+      "has": "собирательный («все») и распределительный («каждый») кванторы различаются формой или позицией",
+      "lacks": "«все» и «каждый» не различаются",
+      "note": "Как англ. all vs. every."
+    }
+  },
+  {
+    "id": "GB250",
+    "original": "Can predicative possession be expressed with a transitive 'habeo' verb?",
+    "en": {
+      "has": "can express possession with a transitive 'have' verb",
+      "lacks": "cannot express possession with a 'have' verb"
+    },
+    "ru": {
+      "has": "предикативное обладание может выражаться переходным глаголом «иметь»",
+      "lacks": "предикативное обладание не выражается глаголом «иметь»",
+      "note": "Как англ. I have a house."
+    }
+  },
+  {
+    "id": "GB252",
+    "original": "Can predicative possession be expressed with an S-like possessum and a locative-coded possessor?",
+    "en": {
+      "has": "can express possession as 'at/on X there is Y'",
+      "lacks": "cannot express possession with a locative possessor"
+    },
+    "ru": {
+      "has": "обладание может выражаться как «у X есть Y» (обладатель в местном падеже)",
+      "lacks": "обладание не выражается локативной конструкцией",
+      "note": "Как рус. «у меня есть дом»."
+    }
+  },
+  {
+    "id": "GB253",
+    "original": "Can predicative possession be expressed with an S-like possessum and a dative-coded possessor?",
+    "en": {
+      "has": "can express possession as 'to X there is Y'",
+      "lacks": "cannot express possession with a dative possessor"
+    },
+    "ru": {
+      "has": "обладание может выражаться как «X-у есть Y» (обладатель в дательном падеже)",
+      "lacks": "обладание не выражается дативной конструкцией",
+      "note": "Как лат. mihi est liber «у меня есть книга» (букв. «мне есть книга»)."
+    }
+  },
+  {
+    "id": "GB254",
+    "original": "Can predicative possession be expressed with an S-like possessum and a possessor that is coded like an adnominal possessor?",
+    "en": {
+      "has": "can express possession as 'X's Y exists'",
+      "lacks": "cannot express possession with an adnominal-style possessor"
+    },
+    "ru": {
+      "has": "обладание может выражаться как «X-ов Y существует» (обладатель оформлен как в именной притяжательной группе)",
+      "lacks": "обладание не выражается так",
+      "note": "Как тур. evim var «у меня есть дом» (букв. «мой дом существует»)."
+    }
+  },
+  {
+    "id": "GB256",
+    "original": "Can predicative possession be expressed with an S-like possessor and a possessum that is coded like a comitative argument?",
+    "en": {
+      "has": "can express possession as 'X is with Y'",
+      "lacks": "cannot express possession with a comitative possessum"
+    },
+    "ru": {
+      "has": "обладание может выражаться как «X с Y» (обладаемое оформлено комитативом)",
+      "lacks": "обладание не выражается комитативной конструкцией",
+      "note": "Как суахили nina kitabu (букв. «я с книгой»)."
+    }
+  },
+  {
+    "id": "GB257",
+    "original": "Can polar interrogation be marked by intonation only?",
+    "en": {
+      "has": "can mark yes/no questions by intonation alone",
+      "lacks": "cannot mark yes/no questions by intonation alone"
+    },
+    "ru": {
+      "has": "общий вопрос может выражаться одной интонацией",
+      "lacks": "общий вопрос не выражается одной интонацией",
+      "note": "Как рус. «Ты пришёл?» — без особых слов, только интонацией."
+    }
+  },
+  {
+    "id": "GB260",
+    "original": "Can polar interrogation be indicated by a special word order?",
+    "en": {
+      "has": "can mark yes/no questions with a special word order",
+      "lacks": "cannot mark yes/no questions by word order"
+    },
+    "ru": {
+      "has": "общий вопрос может выражаться особым порядком слов",
+      "lacks": "общий вопрос не выражается порядком слов",
+      "note": "Как англ. Are you ready? или нем. Kommst du?"
+    }
+  },
+  {
+    "id": "GB262",
+    "original": "Is there a clause-initial polar interrogative particle?",
+    "en": {
+      "has": "has a yes/no question particle at the start of the clause",
+      "lacks": "has no clause-initial question particle"
+    },
+    "ru": {
+      "has": "есть вопросительная частица общего вопроса в начале клаузы",
+      "lacks": "нет вопросительной частицы в начале клаузы",
+      "note": "Как польск. Czy…? или фр. Est-ce que…?"
+    }
+  },
+  {
+    "id": "GB263",
+    "original": "Is there a clause-final polar interrogative particle?",
+    "en": {
+      "has": "has a yes/no question particle at the end of the clause",
+      "lacks": "has no clause-final question particle"
+    },
+    "ru": {
+      "has": "есть вопросительная частица общего вопроса в конце клаузы",
+      "lacks": "нет вопросительной частицы в конце клаузы",
+      "note": "Как кит. …ma? или яп. …ka?"
+    }
+  },
+  {
+    "id": "GB264",
+    "original": "Is there a polar interrogative particle that most commonly occurs neither clause-initially nor clause-finally?",
+    "en": {
+      "has": "has a yes/no question particle in the middle of the clause",
+      "lacks": "has no clause-medial question particle"
+    },
+    "ru": {
+      "has": "есть вопросительная частица, которая чаще всего стоит не в начале и не в конце клаузы",
+      "lacks": "нет вопросительной частицы в середине клаузы",
+      "note": "Как рус. «ли»: «Пришёл ли он?»."
+    }
+  },
+  {
+    "id": "GB265",
+    "original": "Is there a comparative construction that includes a form that elsewhere means 'surpass, exceed'?",
+    "en": {
+      "has": "can compare using a word meaning 'surpass/exceed'",
+      "lacks": "has no comparative built on 'surpass/exceed'"
+    },
+    "ru": {
+      "has": "есть сравнительная конструкция со словом, которое вне её значит «превосходить»",
+      "lacks": "нет сравнительной конструкции с «превосходить»",
+      "note": "«Он высок, превосходя меня» = «он выше меня»; типично для Африки и Юго-Восточной Азии."
+    }
+  },
+  {
+    "id": "GB266",
+    "original": "Is there a comparative construction that employs a marker of the standard which elsewhere has a locational meaning?",
+    "en": {
+      "has": "can compare using a locative marker for the standard ('tall from me')",
+      "lacks": "has no comparative with a locative standard marker"
+    },
+    "ru": {
+      "has": "есть сравнительная конструкция, где объект сравнения оформлен местным показателем",
+      "lacks": "нет сравнительной конструкции с местным показателем",
+      "note": "«Он высокий от меня / на мне» = «он выше меня»."
+    }
+  },
+  {
+    "id": "GB270",
+    "original": "Can comparatives be expressed using two conjoined clauses?",
+    "en": {
+      "has": "can compare using two conjoined clauses ('he is tall, I am short')",
+      "lacks": "cannot compare with two conjoined clauses"
+    },
+    "ru": {
+      "has": "сравнение может выражаться двумя сочинёнными клаузами",
+      "lacks": "сравнение не выражается двумя сочинёнными клаузами",
+      "note": "«Он высокий, а я низкий» как основной способ сказать «он выше меня»."
+    }
+  },
+  {
+    "id": "GB273",
+    "original": "Is there a comparative construction with a standard marker that elsewhere has neither a locational meaning nor a 'surpass/exceed' meaning?",
+    "en": {
+      "has": "has a comparative standard marker without locative or 'surpass' meaning",
+      "lacks": "has no such comparative standard marker"
+    },
+    "ru": {
+      "has": "есть показатель объекта сравнения, который вне сравнения не имеет ни местного значения, ни значения «превосходить»",
+      "lacks": "нет такого показателя объекта сравнения",
+      "note": "Как англ. than или рус. «чем»."
+    }
+  },
+  {
+    "id": "GB275",
+    "original": "Is there a bound comparative degree marker on the property word in a comparative construction?",
+    "en": {
+      "has": "has a bound comparative marker on the adjective",
+      "lacks": "has no bound comparative marker"
+    },
+    "ru": {
+      "has": "есть связанный показатель сравнительной степени на слове-признаке",
+      "lacks": "нет связанного показателя сравнительной степени",
+      "note": "Как англ. tall-er или рус. «выш-е»."
+    }
+  },
+  {
+    "id": "GB276",
+    "original": "Is there a non-bound comparative degree marker modifying the property word in a comparative construction?",
+    "en": {
+      "has": "has a separate word marking the comparative degree",
+      "lacks": "has no free comparative degree word"
+    },
+    "ru": {
+      "has": "есть отдельное слово, маркирующее сравнительную степень",
+      "lacks": "нет отдельного слова для сравнительной степени",
+      "note": "Как англ. more в more beautiful или рус. «более»."
+    }
+  },
+  {
+    "id": "GB285",
+    "original": "Can polar interrogation be marked by a question particle and verbal morphology?",
+    "en": {
+      "has": "can mark yes/no questions with a particle plus verb morphology",
+      "lacks": "cannot combine a question particle with verb morphology"
+    },
+    "ru": {
+      "has": "общий вопрос может выражаться частицей вместе с глагольной морфологией",
+      "lacks": "общий вопрос не выражается частицей вместе с глагольной морфологией",
+      "note": "Требуются одновременно вопросительная частица и особая форма глагола."
+    }
+  },
+  {
+    "id": "GB286",
+    "original": "Can polar interrogation be indicated by overt verbal morphology only?",
+    "en": {
+      "has": "can mark yes/no questions by verb morphology alone",
+      "lacks": "cannot mark yes/no questions by verb morphology alone"
+    },
+    "ru": {
+      "has": "общий вопрос может выражаться только глагольной морфологией",
+      "lacks": "общий вопрос не выражается одной лишь глагольной морфологией",
+      "note": "Особая вопросительная форма глагола без частиц."
+    }
+  },
+  {
+    "id": "GB291",
+    "original": "Can polar interrogation be marked by tone?",
+    "en": {
+      "has": "can mark yes/no questions by tone",
+      "lacks": "cannot mark yes/no questions by tone"
+    },
+    "ru": {
+      "has": "общий вопрос может выражаться тоном",
+      "lacks": "общий вопрос не выражается тоном",
+      "note": "Лексический или грамматический тон (не просто интонация)."
+    }
+  },
+  {
+    "id": "GB296",
+    "original": "Is there a phonologically or morphosyntactically definable class of ideophones that includes ideophones depicting imagery beyond sound?",
+    "en": {
+      "has": "has a class of ideophones depicting more than sound",
+      "lacks": "has no such ideophone class"
+    },
+    "ru": {
+      "has": "есть класс идеофонов, изображающих не только звуки",
+      "lacks": "нет такого класса идеофонов",
+      "note": "Идеофоны — изобразительные слова для звуков, движений, цвета, ощущений: яп. kira-kira «сверкая»."
+    }
+  },
+  {
+    "id": "GB297",
+    "original": "Can polar interrogation be indicated by a V-not-V construction?",
+    "en": {
+      "has": "can ask yes/no questions with a 'V-not-V' construction",
+      "lacks": "has no 'V-not-V' question construction"
+    },
+    "ru": {
+      "has": "общий вопрос может строиться по схеме «V-не-V»",
+      "lacks": "нет конструкции «V-не-V»",
+      "note": "Как кит. nǐ qù bu qù? «ты пойдёшь?» (букв. «ты идёшь не идёшь?»)."
+    }
+  },
+  {
+    "id": "GB298",
+    "original": "Can standard negation be marked by an inflecting word (\"auxiliary verb\")?",
+    "en": {
+      "has": "can mark negation with an inflecting auxiliary verb",
+      "lacks": "cannot mark negation with an inflecting auxiliary"
+    },
+    "ru": {
+      "has": "стандартное отрицание может выражаться изменяемым вспомогательным глаголом",
+      "lacks": "отрицание не выражается изменяемым вспомогательным глаголом",
+      "note": "Как фин. en / et / ei «не» с личными окончаниями."
+    }
+  },
+  {
+    "id": "GB299",
+    "original": "Can standard negation be marked by a non-inflecting word (\"auxiliary particle\")?",
+    "en": {
+      "has": "can mark negation with a non-inflecting particle",
+      "lacks": "cannot mark negation with a non-inflecting particle"
+    },
+    "ru": {
+      "has": "стандартное отрицание может выражаться неизменяемой частицей",
+      "lacks": "отрицание не выражается неизменяемой частицей",
+      "note": "Как рус. «не»."
+    }
+  },
+  {
+    "id": "GB300",
+    "original": "Does the verb for 'give' have suppletive verb forms?",
+    "en": {
+      "has": "has a suppletive verb 'give'",
+      "lacks": "has no suppletive forms of 'give'"
+    },
+    "ru": {
+      "has": "у глагола «давать» есть супплетивные формы",
+      "lacks": "у глагола «давать» нет супплетивных форм",
+      "note": "Например, разные корни в зависимости от получателя («дать мне» vs. «дать ему»)."
+    }
+  },
+  {
+    "id": "GB301",
+    "original": "Is there an inclusory construction?",
+    "en": {
+      "has": "has an inclusory construction ('we with John' = 'John and I')",
+      "lacks": "has no inclusory construction"
+    },
+    "ru": {
+      "has": "есть инклюзорная конструкция («мы с Иваном» = «я и Иван»)",
+      "lacks": "нет инклюзорной конструкции",
+      "note": "Местоимение множественного числа включает в себя названного участника — как рус. «мы с тобой»."
+    }
+  },
+  {
+    "id": "GB302",
+    "original": "Is there a phonologically free passive marker (\"particle\" or \"auxiliary\")?",
+    "en": {
+      "has": "has a free-standing passive marker (particle or auxiliary)",
+      "lacks": "has no free-standing passive marker"
+    },
+    "ru": {
+      "has": "есть фонологически самостоятельный показатель пассива (частица или вспомогательный глагол)",
+      "lacks": "нет самостоятельного показателя пассива",
+      "note": "Как англ. be/get в was built или кит. bèi."
+    }
+  },
+  {
+    "id": "GB303",
+    "original": "Is there a phonologically free antipassive marker (\"particle\" or \"auxiliary\")?",
+    "en": {
+      "has": "has a free-standing antipassive marker",
+      "lacks": "has no free-standing antipassive marker"
+    },
+    "ru": {
+      "has": "есть фонологически самостоятельный показатель антипассива",
+      "lacks": "нет самостоятельного показателя антипассива",
+      "note": "Антипассив, выраженный отдельной частицей или вспомогательным словом."
+    }
+  },
+  {
+    "id": "GB304",
+    "original": "Can the agent be expressed overtly in a passive clause?",
+    "en": {
+      "has": "can express the agent overtly in a passive",
+      "lacks": "cannot express the agent in a passive"
+    },
+    "ru": {
+      "has": "агенс может быть выражен в пассивной конструкции",
+      "lacks": "агенс не может быть выражен в пассивной конструкции",
+      "note": "Как англ. by-phrase или рус. творительный: «построен рабочими»."
+    }
+  },
+  {
+    "id": "GB305",
+    "original": "Is there a phonologically independent reflexive pronoun?",
+    "en": {
+      "has": "has an independent reflexive pronoun",
+      "lacks": "has no independent reflexive pronoun"
+    },
+    "ru": {
+      "has": "есть самостоятельное возвратное местоимение",
+      "lacks": "нет самостоятельного возвратного местоимения",
+      "note": "Как рус. «себя», англ. himself."
+    }
+  },
+  {
+    "id": "GB306",
+    "original": "Is there a phonologically independent non-bipartite reciprocal pronoun?",
+    "en": {
+      "has": "has an independent (single-word) reciprocal pronoun",
+      "lacks": "has no independent single-word reciprocal pronoun"
+    },
+    "ru": {
+      "has": "есть самостоятельное нерасчленённое взаимное местоимение",
+      "lacks": "нет самостоятельного нерасчленённого взаимного местоимения",
+      "note": "Однословное «друг друга» (рус. «друг друга» двусоставно и сюда не относится)."
+    }
+  },
+  {
+    "id": "GB309",
+    "original": "Are there multiple past or multiple future tenses, distinguishing distance from Time of Reference?",
+    "en": {
+      "has": "has multiple past or future tenses by distance in time",
+      "lacks": "has no remoteness distinctions in tense"
+    },
+    "ru": {
+      "has": "есть несколько прошедших или будущих времён, различающихся удалённостью",
+      "lacks": "нет различий удалённости во временах",
+      "note": "Например, отдельные формы для «сегодня утром», «вчера» и «давно»."
+    }
+  },
+  {
+    "id": "GB312",
+    "original": "Is there overt morphological marking on the verb dedicated to mood?",
+    "en": {
+      "has": "has dedicated mood marking on the verb",
+      "lacks": "has no dedicated mood marking on the verb"
+    },
+    "ru": {
+      "has": "на глаголе есть специальные морфологические показатели наклонения",
+      "lacks": "на глаголе нет специальных показателей наклонения",
+      "note": "Например, сослагательное или желательное наклонение, выраженное аффиксом."
+    }
+  },
+  {
+    "id": "GB313",
+    "original": "Are there special adnominal possessive pronouns that are not formed by an otherwise regular process?",
+    "en": {
+      "has": "has special possessive pronouns not formed by a regular process",
+      "lacks": "has no special possessive pronouns"
+    },
+    "ru": {
+      "has": "есть особые притяжательные местоимения, не образованные регулярным способом",
+      "lacks": "нет особых притяжательных местоимений",
+      "note": "Как англ. my, your (а не регулярное *I's)."
+    }
+  },
+  {
+    "id": "GB314",
+    "original": "Can augmentative meaning be expressed productively by a shift of gender/noun class?",
+    "en": {
+      "has": "can express augmentative meaning by switching gender/class",
+      "lacks": "cannot express augmentative by gender/class shift"
+    },
+    "ru": {
+      "has": "увеличительное значение может выражаться сменой рода/класса",
+      "lacks": "увеличительное значение не выражается сменой рода/класса",
+      "note": "Например, в языках банту перевод слова в другой класс делает предмет «огромным»."
+    }
+  },
+  {
+    "id": "GB315",
+    "original": "Can diminutive meaning be expressed productively by a shift of gender/noun class?",
+    "en": {
+      "has": "can express diminutive meaning by switching gender/class",
+      "lacks": "cannot express diminutive by gender/class shift"
+    },
+    "ru": {
+      "has": "уменьшительное значение может выражаться сменой рода/класса",
+      "lacks": "уменьшительное значение не выражается сменой рода/класса",
+      "note": "Например, в языках банту перевод слова в другой класс делает предмет «маленьким»."
+    }
+  },
+  {
+    "id": "GB316",
+    "original": "Is singular number regularly marked in the noun phrase by a dedicated phonologically free element?",
+    "en": {
+      "has": "marks singular with a separate word in the noun phrase",
+      "lacks": "does not mark singular with a separate word"
+    },
+    "ru": {
+      "has": "единственное число регулярно выражается в именной группе отдельным служебным словом",
+      "lacks": "единственное число не выражается отдельным словом",
+      "note": "Особая частица или слово для единственного числа (не числительное «один»)."
+    }
+  },
+  {
+    "id": "GB317",
+    "original": "Is dual number regularly marked in the noun phrase by a dedicated phonologically free element?",
+    "en": {
+      "has": "marks dual with a separate word in the noun phrase",
+      "lacks": "does not mark dual with a separate word"
+    },
+    "ru": {
+      "has": "двойственное число регулярно выражается в именной группе отдельным служебным словом",
+      "lacks": "двойственное число не выражается отдельным словом",
+      "note": "Особое служебное слово для двойственного числа."
+    }
+  },
+  {
+    "id": "GB318",
+    "original": "Is plural number regularly marked in the noun phrase by a dedicated phonologically free element?",
+    "en": {
+      "has": "marks plural with a separate word in the noun phrase",
+      "lacks": "does not mark plural with a separate word"
+    },
+    "ru": {
+      "has": "множественное число регулярно выражается в именной группе отдельным служебным словом",
+      "lacks": "множественное число не выражается отдельным словом",
+      "note": "Как тагальск. mga: mga bahay «дома»."
+    }
+  },
+  {
+    "id": "GB319",
+    "original": "Is trial number regularly marked in the noun phrase by a dedicated phonologically free element?",
+    "en": {
+      "has": "marks trial with a separate word in the noun phrase",
+      "lacks": "does not mark trial with a separate word"
+    },
+    "ru": {
+      "has": "тройственное число регулярно выражается в именной группе отдельным служебным словом",
+      "lacks": "тройственное число не выражается отдельным словом",
+      "note": "Особое служебное слово для тройственного числа."
+    }
+  },
+  {
+    "id": "GB320",
+    "original": "Is paucal number regularly marked in the noun phrase by a dedicated phonologically free element?",
+    "en": {
+      "has": "marks paucal with a separate word in the noun phrase",
+      "lacks": "does not mark paucal with a separate word"
+    },
+    "ru": {
+      "has": "паукальное число регулярно выражается в именной группе отдельным служебным словом",
+      "lacks": "паукальное число не выражается отдельным словом",
+      "note": "Особое служебное слово для «нескольких»."
+    }
+  },
+  {
+    "id": "GB321",
+    "original": "Is there a large class of nouns whose gender/noun class is not phonologically or semantically predictable?",
+    "en": {
+      "has": "has many nouns whose gender/class is unpredictable",
+      "lacks": "has no large class of nouns with unpredictable gender"
+    },
+    "ru": {
+      "has": "есть большая группа существительных, род/класс которых нельзя предсказать ни по форме, ни по значению",
+      "lacks": "род/класс существительных в основном предсказуем",
+      "note": "Как нем. der Löffel, die Gabel, das Messer — род приходится запоминать."
+    }
+  },
+  {
+    "id": "GB322",
+    "original": "Is there grammatical marking of direct evidence (perceived with the senses)?",
+    "en": {
+      "has": "grammatically marks direct (sensory) evidence",
+      "lacks": "does not grammatically mark direct evidence"
+    },
+    "ru": {
+      "has": "грамматически маркируется прямая засвидетельствованность (видел/слышал сам)",
+      "lacks": "прямая засвидетельствованность грамматически не маркируется",
+      "note": "Эвиденциальность — грамматическое указание на источник знания."
+    }
+  },
+  {
+    "id": "GB323",
+    "original": "Is there grammatical marking of indirect evidence (hearsay, inference, etc.)?",
+    "en": {
+      "has": "grammatically marks indirect evidence (hearsay, inference)",
+      "lacks": "does not grammatically mark indirect evidence"
+    },
+    "ru": {
+      "has": "грамматически маркируется косвенная засвидетельствованность (пересказ, вывод)",
+      "lacks": "косвенная засвидетельствованность грамматически не маркируется",
+      "note": "Как тур. -miş: geldi «пришёл (видел сам)» vs. gelmiş «пришёл, говорят»."
+    }
+  },
+  {
+    "id": "GB324",
+    "original": "Is there an interrogative verb for content interrogatives (who?, what?, etc.)?",
+    "en": {
+      "has": "has an interrogative verb (like 'to do what?')",
+      "lacks": "has no interrogative verb"
+    },
+    "ru": {
+      "has": "есть вопросительный глагол («что-делать?»)",
+      "lacks": "нет вопросительного глагола",
+      "note": "Глагол со значением «делать что?» или «быть каким?», спрягающийся как обычный глагол."
+    }
+  },
+  {
+    "id": "GB325",
+    "original": "Is there a count/mass distinction in interrogative quantifiers?",
+    "en": {
+      "has": "distinguishes count and mass in interrogative quantifiers ('how many' vs 'how much')",
+      "lacks": "does not distinguish 'how many' and 'how much'"
+    },
+    "ru": {
+      "has": "в вопросительных кванторах различаются исчисляемое и неисчисляемое («сколько штук» vs. «сколько вещества»)",
+      "lacks": "вопросительные кванторы не различают исчисляемое и неисчисляемое",
+      "note": "Как англ. how many vs. how much."
+    }
+  },
+  {
+    "id": "GB326",
+    "original": "Do (nominal) content interrogatives normally or frequently occur in situ?",
+    "en": {
+      "has": "normally leaves question words in place (in situ)",
+      "lacks": "normally does not leave question words in place"
+    },
+    "ru": {
+      "has": "вопросительные слова обычно остаются на месте (in situ)",
+      "lacks": "вопросительные слова обычно не остаются на месте",
+      "note": "Как кит. nǐ chī shénme? «ты ешь что?» вместо выноса вопросительного слова в начало."
+    }
+  },
+  {
+    "id": "GB327",
+    "original": "Can the relative clause follow the noun?",
+    "en": {
+      "has": "allows relative clauses after the noun",
+      "lacks": "does not allow relative clauses after the noun"
+    },
+    "ru": {
+      "has": "относительное придаточное может следовать за существительным",
+      "lacks": "относительное придаточное не может следовать за существительным",
+      "note": "Как рус. «дом, который построил Джек»."
+    }
+  },
+  {
+    "id": "GB328",
+    "original": "Can the relative clause precede the noun?",
+    "en": {
+      "has": "allows relative clauses before the noun",
+      "lacks": "does not allow relative clauses before the noun"
+    },
+    "ru": {
+      "has": "относительное придаточное может предшествовать существительному",
+      "lacks": "относительное придаточное не может предшествовать существительному",
+      "note": "Как яп. Jack-ga tateta ie «построенный Джеком дом»."
+    }
+  },
+  {
+    "id": "GB329",
+    "original": "Are there internally-headed relative clauses?",
+    "en": {
+      "has": "has internally headed relative clauses",
+      "lacks": "has no internally headed relative clauses"
+    },
+    "ru": {
+      "has": "есть относительные придаточные с внутренней вершиной",
+      "lacks": "нет относительных придаточных с внутренней вершиной",
+      "note": "Определяемое существительное стоит внутри самого придаточного: «[Джек дом построил] — тот красный»."
+    }
+  },
+  {
+    "id": "GB330",
+    "original": "Are there correlative relative clauses?",
+    "en": {
+      "has": "has correlative relative clauses",
+      "lacks": "has no correlative relative clauses"
+    },
+    "ru": {
+      "has": "есть коррелятивные относительные придаточные",
+      "lacks": "нет коррелятивных относительных придаточных",
+      "note": "Схема «какой дом Джек построил, тот дом красный» — типично для хинди."
+    }
+  },
+  {
+    "id": "GB331",
+    "original": "Are there non-adjacent relative clauses?",
+    "en": {
+      "has": "has relative clauses separated from their noun",
+      "lacks": "has no non-adjacent relative clauses"
+    },
+    "ru": {
+      "has": "есть относительные придаточные, отделённые от своего существительного",
+      "lacks": "нет относительных придаточных, отделённых от существительного",
+      "note": "Придаточное отделено от определяемого слова другими элементами предложения."
+    }
+  },
+  {
+    "id": "GB333",
+    "original": "Is there a decimal numeral system?",
+    "en": {
+      "has": "has a decimal number system",
+      "lacks": "has no decimal number system"
+    },
+    "ru": {
+      "has": "есть десятичная система счисления",
+      "lacks": "нет десятичной системы счисления",
+      "note": "Числа строятся на основе 10."
+    }
+  },
+  {
+    "id": "GB334",
+    "original": "Is there synchronic evidence for any element of a quinary numeral system?",
+    "en": {
+      "has": "shows traces of a base-5 number system",
+      "lacks": "shows no traces of a base-5 number system"
+    },
+    "ru": {
+      "has": "есть синхронные следы пятеричной системы счисления",
+      "lacks": "нет следов пятеричной системы счисления",
+      "note": "Например, «шесть» = «пять-один»."
+    }
+  },
+  {
+    "id": "GB335",
+    "original": "Is there synchronic evidence for any element of a vigesimal numeral system?",
+    "en": {
+      "has": "shows traces of a base-20 number system",
+      "lacks": "shows no traces of a base-20 number system"
+    },
+    "ru": {
+      "has": "есть синхронные следы двадцатеричной системы счисления",
+      "lacks": "нет следов двадцатеричной системы счисления",
+      "note": "Как фр. quatre-vingts «восемьдесят» (букв. «четыре двадцатки»)."
+    }
+  },
+  {
+    "id": "GB336",
+    "original": "Is there a body-part tallying system?",
+    "en": {
+      "has": "has a body-part tallying system",
+      "lacks": "has no body-part tallying system"
+    },
+    "ru": {
+      "has": "есть счёт по частям тела",
+      "lacks": "нет счёта по частям тела",
+      "note": "Числа называются по частям тела в определённом порядке (пальцы, запястье, локоть…); типично для Новой Гвинеи."
+    }
+  },
+  {
+    "id": "GB400",
+    "original": "Are all person categories neutralized in some voice, tense, aspect, mood and/or negation?",
+    "en": {
+      "has": "neutralizes all person distinctions in some verb form",
+      "lacks": "never neutralizes all person distinctions"
+    },
+    "ru": {
+      "has": "в некоторых формах (залоге, времени, наклонении, при отрицании) все личные различия нейтрализуются",
+      "lacks": "личные различия нигде полностью не нейтрализуются",
+      "note": "Например, в рус. прошедшем времени «я/ты/он читал» лицо не различается."
+    }
+  },
+  {
+    "id": "GB401",
+    "original": "Is there a class of patient-labile verbs?",
+    "en": {
+      "has": "has a class of patient-labile verbs ('break' as in 'I broke it' / 'it broke')",
+      "lacks": "has no class of patient-labile verbs"
+    },
+    "ru": {
+      "has": "есть класс лабильных глаголов («сломать» / «сломаться» одной формой)",
+      "lacks": "нет класса лабильных глаголов",
+      "note": "Как англ. break: I broke the cup / the cup broke."
+    }
+  },
+  {
+    "id": "GB402",
+    "original": "Does the verb for 'see' have suppletive verb forms?",
+    "en": {
+      "has": "has a suppletive verb 'see'",
+      "lacks": "has no suppletive forms of 'see'"
+    },
+    "ru": {
+      "has": "у глагола «видеть» есть супплетивные формы",
+      "lacks": "у глагола «видеть» нет супплетивных форм",
+      "note": "Формы глагола «видеть» образуются от разных корней."
+    }
+  },
+  {
+    "id": "GB403",
+    "original": "Does the verb for 'come' have suppletive verb forms?",
+    "en": {
+      "has": "has a suppletive verb 'come'",
+      "lacks": "has no suppletive forms of 'come'"
+    },
+    "ru": {
+      "has": "у глагола «приходить» есть супплетивные формы",
+      "lacks": "у глагола «приходить» нет супплетивных форм",
+      "note": "Формы глагола «приходить» образуются от разных корней (ср. рус. «иду» — «шёл»)."
+    }
+  },
+  {
+    "id": "GB408",
+    "original": "Is there any accusative alignment of flagging?",
+    "en": {
+      "has": "has accusative alignment in case marking",
+      "lacks": "has no accusative alignment in case marking"
+    },
+    "ru": {
+      "has": "есть аккузативная модель падежного маркирования (хотя бы частично)",
+      "lacks": "нет аккузативной модели падежного маркирования",
+      "note": "Подлежащее непереходного и переходного глагола оформлены одинаково, дополнение — иначе: «мама спит», «мама видит папу»."
+    }
+  },
+  {
+    "id": "GB409",
+    "original": "Is there any ergative alignment of flagging?",
+    "en": {
+      "has": "has ergative alignment in case marking",
+      "lacks": "has no ergative alignment in case marking"
+    },
+    "ru": {
+      "has": "есть эргативная модель падежного маркирования (хотя бы частично)",
+      "lacks": "нет эргативной модели падежного маркирования",
+      "note": "Агенс переходного глагола оформлен особым падежом, а подлежащее непереходного — как дополнение (баскский, грузинский в прошедшем)."
+    }
+  },
+  {
+    "id": "GB410",
+    "original": "Is there any neutral alignment of flagging?",
+    "en": {
+      "has": "has neutral alignment in case marking (no case difference between subject and object)",
+      "lacks": "has no neutral alignment in case marking"
+    },
+    "ru": {
+      "has": "есть нейтральная модель маркирования (подлежащее и дополнение никак не различаются падежом)",
+      "lacks": "нет нейтральной модели маркирования",
+      "note": "Как англ. существительные: the dog saw the cat — ни у одного нет падежного показателя."
+    }
+  },
+  {
+    "id": "GB415",
+    "original": "Is there a politeness distinction in 2nd person forms?",
+    "en": {
+      "has": "distinguishes politeness in 2nd-person forms",
+      "lacks": "has no politeness distinction in 2nd-person forms"
+    },
+    "ru": {
+      "has": "в формах 2-го лица различается вежливость",
+      "lacks": "в формах 2-го лица вежливость не различается",
+      "note": "Как рус. «ты» / «Вы»."
+    }
+  },
+  {
+    "id": "GB421",
+    "original": "Is there a preposed complementizer in complements of verbs of thinking and/or knowing?",
+    "en": {
+      "has": "has a complementizer before the clause after 'think/know'",
+      "lacks": "has no preposed complementizer"
+    },
+    "ru": {
+      "has": "есть препозитивный союз-комплементайзер в придаточных при глаголах мнения/знания",
+      "lacks": "нет препозитивного комплементайзера",
+      "note": "Как рус. «знаю, что…», англ. that."
+    }
+  },
+  {
+    "id": "GB422",
+    "original": "Is there a postposed complementizer in complements of verbs of thinking and/or knowing?",
+    "en": {
+      "has": "has a complementizer after the clause after 'think/know'",
+      "lacks": "has no postposed complementizer"
+    },
+    "ru": {
+      "has": "есть постпозитивный комплементайзер в придаточных при глаголах мнения/знания",
+      "lacks": "нет постпозитивного комплементайзера",
+      "note": "Как яп. …to omou «думаю, что…» (to стоит после придаточного)."
+    }
+  },
+  {
+    "id": "GB430",
+    "original": "Can adnominal possession be marked by a prefix on the possessor?",
+    "en": {
+      "has": "can mark possession with a prefix on the possessor",
+      "lacks": "cannot mark possession with a prefix on the possessor"
+    },
+    "ru": {
+      "has": "принадлежность может маркироваться префиксом на обладателе",
+      "lacks": "принадлежность не маркируется префиксом на обладателе",
+      "note": "Показатель «чей» стоит перед словом-обладателем и приращён к нему."
+    }
+  },
+  {
+    "id": "GB431",
+    "original": "Can adnominal possession be marked by a prefix on the possessed noun?",
+    "en": {
+      "has": "can mark possession with a prefix on the possessed noun",
+      "lacks": "cannot mark possession with a prefix on the possessed noun"
+    },
+    "ru": {
+      "has": "принадлежность может маркироваться префиксом на обладаемом",
+      "lacks": "принадлежность не маркируется префиксом на обладаемом",
+      "note": "Например, языки майя: u-na' Juan «мать Хуана» (букв. «его-мать Хуан»)."
+    }
+  },
+  {
+    "id": "GB432",
+    "original": "Can adnominal possession be marked by a suffix on the possessor?",
+    "en": {
+      "has": "can mark possession with a suffix on the possessor",
+      "lacks": "cannot mark possession with a suffix on the possessor"
+    },
+    "ru": {
+      "has": "принадлежность может маркироваться суффиксом на обладателе",
+      "lacks": "принадлежность не маркируется суффиксом на обладателе",
+      "note": "Как родительный падеж: рус. «дом отц-а», англ. father's."
+    }
+  },
+  {
+    "id": "GB433",
+    "original": "Can adnominal possession be marked by a suffix on the possessed noun?",
+    "en": {
+      "has": "can mark possession with a suffix on the possessed noun",
+      "lacks": "cannot mark possession with a suffix on the possessed noun"
+    },
+    "ru": {
+      "has": "принадлежность может маркироваться суффиксом на обладаемом",
+      "lacks": "принадлежность не маркируется суффиксом на обладаемом",
+      "note": "Как тур. baba-nın ev-i «дом отца» (-i на слове «дом»)."
+    }
+  },
+  {
+    "id": "GB519",
+    "original": "Can mood be marked by a non-inflecting word (\"auxiliary particle\")?",
+    "en": {
+      "has": "can mark mood with a non-inflecting particle",
+      "lacks": "cannot mark mood with a non-inflecting particle"
+    },
+    "ru": {
+      "has": "наклонение может выражаться неизменяемой частицей",
+      "lacks": "наклонение не выражается неизменяемой частицей",
+      "note": "Как рус. «бы» в «пошёл бы»."
+    }
+  },
+  {
+    "id": "GB520",
+    "original": "Can aspect be marked by a non-inflecting word (\"auxiliary particle\")?",
+    "en": {
+      "has": "can mark aspect with a non-inflecting particle",
+      "lacks": "cannot mark aspect with a non-inflecting particle"
+    },
+    "ru": {
+      "has": "вид может выражаться неизменяемой частицей",
+      "lacks": "вид не выражается неизменяемой частицей",
+      "note": "Как кит. le или zài."
+    }
+  },
+  {
+    "id": "GB521",
+    "original": "Can tense be marked by a non-inflecting word (\"auxiliary particle\")?",
+    "en": {
+      "has": "can mark tense with a non-inflecting particle",
+      "lacks": "cannot mark tense with a non-inflecting particle"
+    },
+    "ru": {
+      "has": "время может выражаться неизменяемой частицей",
+      "lacks": "время не выражается неизменяемой частицей",
+      "note": "Например, ток-писин bai «будет»."
+    }
+  },
+  {
+    "id": "GB522",
+    "original": "Can the S or A argument be omitted from a pragmatically unmarked clause when the referent is inferrable from context (\"pro-drop\" or \"null anaphora\")?",
+    "en": {
+      "has": "can drop the subject when it is clear from context (pro-drop)",
+      "lacks": "cannot drop the subject (no pro-drop)"
+    },
+    "ru": {
+      "has": "подлежащее (S или A) может опускаться, если ясно из контекста (pro-drop)",
+      "lacks": "подлежащее не может опускаться (нет pro-drop)",
+      "note": "Как исп. Hablo español «(Я) говорю по-испански»."
+    }
+  }
+]

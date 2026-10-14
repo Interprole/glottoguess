@@ -41,11 +41,15 @@ csv.field_size_limit(sys.maxsize)
 
 MACROAREAS = ["Africa", "Australia", "Eurasia", "North America", "Papunesia", "South America"]
 
-# Normal-difficulty criterion: a language must be documented in a major
-# typological database (Grambank or WALS) *and* have Wikipedia articles in at
-# least this many language editions.  Glottolog ships the Wikipedia-derived
-# names (provider "lexvo"), one per language edition, so counting them is a
-# reasonable, reproducible proxy for how widely known a language is.
+# Normal-difficulty criterion ("reasonably well-known languages"): a puzzle-
+# eligible language qualifies if EITHER
+#   (a) it is in the WALS 200-language sample (the canonical typological
+#       sample, which favours well-described, often large languages), OR
+#   (b) it is documented in Grambank or WALS *and* has Wikipedia articles in at
+#       least NORMAL_MIN_WIKI_EDITIONS language editions.  Glottolog ships the
+#       Wikipedia-derived names (provider "lexvo"), one per edition; the count
+#       is a noisy but reproducible proxy for public recognition (German only
+#       has 6 such names, hence (a)).
 NORMAL_MIN_WIKI_EDITIONS = 10
 
 # Grambank similarity: compare two languages only on features known (0/1/2/3,
@@ -407,6 +411,7 @@ def summary_paragraph(description: str) -> str:
     m = re.search(r"## Summary\s*\n(.*?)(\n\s*\n|\n##)", description, flags=re.S)
     text = m.group(1) if m else ""
     text = re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", text)  # markdown links -> text
+    text = re.sub(r"(\*\*|\*|__)(.+?)\1", r"\2", text)  # emphasis markers
     text = re.sub(r"\s+", " ", text).strip()
     return text
 
@@ -543,11 +548,13 @@ def open_bib(gdir: Path) -> Iterator[str]:
 
 # ----------------------------------------------------------------------- main
 
-def load_wals_glottocodes(wdir: Path) -> set[str]:
+def load_wals(wdir: Path) -> tuple[set[str], set[str]]:
+    """Glottocodes of all WALS languages and of those in the 200-language sample."""
     path = wdir / "cldf" / "languages.csv"
     if not path.exists():
-        return set()
-    return {r["Glottocode"] for r in read_csv(path) if r.get("Glottocode")}
+        return set(), set()
+    rows = [r for r in read_csv(path) if r.get("Glottocode")]
+    return {r["Glottocode"] for r in rows}, {r["Glottocode"] for r in rows if r.get("Samples_200") == "true"}
 
 
 def wiki_edition_counts(gdir: Path) -> collections.Counter:
@@ -578,7 +585,7 @@ def build(raw: Path, out: Path, feature_texts_path: Path, with_bib: bool = True,
     langs = load_glottolog(gdir)
     tree = build_tree(langs)
     gb = load_grambank(gbdir, langs)
-    wals = load_wals_glottocodes(wdir)
+    wals, wals200 = load_wals(wdir)
     wiki = wiki_edition_counts(gdir)
     alt, ru = load_names(gdir, set(tree.languages))
 
@@ -608,7 +615,8 @@ def build(raw: Path, out: Path, feature_texts_path: Path, with_bib: bool = True,
         if eligible:
             flags |= FLAG_HARD
             pools["hard"].append(gc)
-            if wiki[gc] >= NORMAL_MIN_WIKI_EDITIONS and flags & (FLAG_GRAMBANK | FLAG_WALS):
+            known = wiki[gc] >= NORMAL_MIN_WIKI_EDITIONS and flags & (FLAG_GRAMBANK | FLAG_WALS)
+            if gc in wals200 or known:
                 flags |= FLAG_NORMAL
                 pools["normal"].append(gc)
         languages_out[gc] = [

@@ -164,6 +164,7 @@ def raw(tmp_path: Path) -> Path:
               ["Feature_ID", "Main_domain", "Finer_grouping"],
               [dict(Feature_ID="GB020", Main_domain="nominal domain", Finer_grouping="deixis")])
 
-    write_csv(tmp_path / "raw" / "wals" / "cldf" / "languages.csv", ["ID", "Name", "Glottocode"],
-              [dict(ID="ba", Name="Ba", Glottocode="baba1234")])
+    write_csv(tmp_path / "raw" / "wals" / "cldf" / "languages.csv", ["ID", "Name", "Glottocode", "Samples_200"],
+              [dict(ID="ba", Name="Ba", Glottocode="baba1234", Samples_200="false"),
+               dict(ID="ac", Name="Ac", Glottocode="acac1234", Samples_200="true")])
     return tmp_path / "raw"

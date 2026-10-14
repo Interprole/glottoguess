@@ -70,6 +70,7 @@ def test_summary_paragraph():
     d = "## Q?\n\n## Summary\nAn [article](http://x) is a marker.\nSecond line.\n\n## Procedure\n1."
     assert bd.summary_paragraph(d) == "An article is a marker. Second line."
     assert bd.summary_paragraph("") == ""
+    assert bd.summary_paragraph("## Summary\nSay *I don't* or **no**.\n\n") == "Say I don't or no."
 
 
 def test_bib_reader_and_reference_selection(raw: Path):
@@ -105,14 +106,17 @@ def test_full_build(raw: Path, tmp_path: Path):
     assert core["families"]["alph1234"] == ["Alpha", None, "Eurasia"]
     assert core["families"]["nort1234"] == ["Alpha-North", "alph1234"]
     flags = {gc: row[9] for gc, row in core["languages"].items()}
-    # Aa: Grambank + Normal + Hard; Ba: Grambank + WALS + Hard (too few Wikipedia names for Normal)
+    # Aa: Grambank + 10 Wikipedia names -> Normal
     assert flags["aaaa1234"] == bd.FLAG_GRAMBANK | bd.FLAG_NORMAL | bd.FLAG_HARD
+    # Ba: in WALS, but neither in the 200-sample nor with enough Wikipedia names
     assert flags["baba1234"] == bd.FLAG_GRAMBANK | bd.FLAG_WALS | bd.FLAG_HARD
+    # Ac: in the WALS 200-language sample -> Normal
+    assert flags["acac1234"] == bd.FLAG_WALS | bd.FLAG_NORMAL | bd.FLAG_HARD
     # isolates and sign languages are never puzzle targets
     assert not flags["isol1234"] & bd.FLAG_HARD
     assert not flags["sgnl1234"] & bd.FLAG_HARD
     assert core["languages"]["sgnl1234"][8] == "sign"
-    assert stats["pool_normal"] == 1 and stats["pool_hard"] == 4
+    assert stats["pool_normal"] == 2 and stats["pool_hard"] == 4
     assert stats["tree_depth_max"] == 2
 
     gbj = json.loads((out / "grambank.json").read_text())
