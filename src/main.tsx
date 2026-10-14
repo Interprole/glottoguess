@@ -1,3 +1,10 @@
 import { render } from 'preact';
+import '@fontsource-variable/literata/opsz.css';
+import '@fontsource/ibm-plex-sans/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-sans/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import './styles.css';
+import { App } from './App';
 
-render(<main><h1>LangBang</h1><p>Coming soon.</p></main>, document.getElementById('app')!);
+render(<App />, document.getElementById('app')!);
