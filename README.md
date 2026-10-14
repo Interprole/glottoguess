@@ -41,7 +41,7 @@ Please cite:
 - Skirgård, Hedvig et al. 2023. Grambank reveals the importance of genealogical constraints on linguistic diversity and highlights the impact of language loss. *Science Advances* 9(16): eadg6175. https://doi.org/10.1126/sciadv.adg6175 (full author list on the site's About page)
 - Dryer, Matthew S. & Haspelmath, Martin (eds.) 2013. *The World Atlas of Language Structures Online*. Leipzig: Max Planck Institute for Evolutionary Anthropology. https://wals.info
 
-The raw data are **not** committed. Only compact derived files are in `public/data/` (~2 MB gzipped, most of it the
+The raw data are **not** committed. Only compact derived files are in `public/data/` (~3 MB gzipped, most of it the
 lazily loaded bibliography).
 
 ## Development
