@@ -1,0 +1,8 @@
+# raw CLDF downloads (fetched by scripts/fetch_data.py)
+raw/
+node_modules/
+dist/
+__pycache__/
+.pytest_cache/
+*.pyc
+.venv/
