@@ -12,9 +12,11 @@ try {
   /* data not built yet */
 }
 
-// Served from https://<user>.github.io/glottoguess/ on GitHub Pages.
+// Relative asset paths: the build works under any URL prefix (GitHub Pages
+// serves it at /<repo-name>/, and renaming the repo must not break it).
+// Routing is hash-based, so the page itself never changes path.
 export default defineConfig({
-  base: process.env.BASE_PATH ?? '/glottoguess/',
+  base: './',
   plugins: [preact()],
   define: { __DATA_VERSION__: JSON.stringify(dataVersion) },
   test: {

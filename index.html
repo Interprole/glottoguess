@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>GlottoGuess — language games on open data</title>
     <meta name="description" content="Daily language-guessing puzzle on the Glottolog family tree and a typology quiz on Grambank features." />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <meta name="theme-color" content="#f3eee3" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#11181b" media="(prefers-color-scheme: dark)" />
   </head>
   <body>
     <div id="app"></div>
+    <script>
+      // If the app fails to start, show a message instead of a blank page.
+      window.addEventListener('error', function (e) {
+        var app = document.getElementById('app');
+        if (app && !app.childElementCount) {
+          app.innerHTML = '<p style="font:16px system-ui;padding:24px;max-width:560px">GlottoGuess could not start: ' +
+            String(e.message || 'unknown error').replace(/</g, '&lt;') + '. Please reload; if it persists, clear the site data.</p>';
+        }
+      });
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
