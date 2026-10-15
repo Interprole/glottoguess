@@ -22,5 +22,14 @@
     "url": "https://wals.info",
     "license": "CC-BY-4.0",
     "citation": "Dryer, Matthew S. & Haspelmath, Martin (eds.) 2013. The World Atlas of Language Structures Online. Leipzig: Max Planck Institute for Evolutionary Anthropology. (Available online at https://wals.info)"
+  },
+  "linguameta": {
+    "repo": "google-research/url-nlp",
+    "commit": "452a21ad3dae5668c06ceeac21ff073e1e40f9be",
+    "sparse": "linguameta",
+    "title": "LinguaMeta (2025-08-01 snapshot)",
+    "url": "https://github.com/google-research/url-nlp/tree/main/linguameta",
+    "license": "CC-BY-SA-4.0",
+    "citation": "Ritchie, Sandy & van Esch, Daan & Okonkwo, Uche & Vashishth, Shikhar & Drummond, Emily. 2024. LinguaMeta: Unified metadata for thousands of languages. In Proceedings of LREC-COLING 2024, 10530–10538. Torino: ELRA. https://aclanthology.org/2024.lrec-main.921"
   }
 }

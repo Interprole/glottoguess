@@ -56,7 +56,7 @@ def raw(tmp_path: Path) -> Path:
         lang("abdi1234", "Ab-dialect", "dialect", "Eurasia", "51", "11", "alph1234", "abab1234"),
         lang("acac1234", "Ac", "language", "Africa;Eurasia", "30", "30", "alph1234"),
         lang("beta1234", "Beta", "family", "Africa"),
-        lang("baba1234", "Ba", "language", "Africa", "0", "20", "beta1234"),
+        dict(lang("baba1234", "Ba", "language", "Africa", "0", "20", "beta1234"), ISO639P3code="bba"),
         lang("isol1234", "Iso", "language", "Papunesia", "-5", "140", isolate="true"),
         lang("sign1234", "Sign Language", "family"),
         lang("sgnl1234", "Some Sign", "language", "Eurasia", "45", "5", "sign1234"),
@@ -167,4 +167,13 @@ def raw(tmp_path: Path) -> Path:
     write_csv(tmp_path / "raw" / "wals" / "cldf" / "languages.csv", ["ID", "Name", "Glottocode", "Samples_200"],
               [dict(ID="ba", Name="Ba", Glottocode="baba1234", Samples_200="false"),
                dict(ID="ac", Name="Ac", Glottocode="acac1234", Samples_200="true")])
+    lm = tmp_path / "raw" / "linguameta" / "linguameta"
+    lm.mkdir(parents=True)
+    (lm / "linguameta.tsv").write_text(
+        "bcp_47_code\tiso_639_3_code\testimated_number_of_speakers\tis_macrolanguage\tglottocode\n"
+        "aa\t\t120000\tFalse\taaaa1234\n"      # by glottocode
+        "ab\t\t5000\tFalse\tabdi1234\n"        # dialect code -> lifted to Ab
+        "ba\tbba\t300\tFalse\t\n"               # by ISO code
+        "mac\tmac\t9999999\tTrue\tbeta1234\n",   # macrolanguage row: ignored
+        encoding="utf-8")
     return tmp_path / "raw"
