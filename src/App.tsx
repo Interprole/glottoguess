@@ -7,9 +7,9 @@ import { Logo } from './components/Logo';
 import { Rules } from './components/Rules';
 import { Typology } from './components/Typology';
 import { buildSearchIndex, displayName, loadCore, loadMeta, loadNames } from './lib/data';
-import { STRINGS } from './lib/i18n';
+import { t } from './lib/i18n';
 import { readJSON, writeJSON } from './lib/storage';
-import type { CoreData, Lang, MetaData, NamesData } from './lib/types';
+import type { CoreData, MetaData, NamesData } from './lib/types';
 
 type Route = 'play' | 'typology' | 'rules' | 'about';
 const ROUTES: Route[] = ['play', 'typology', 'rules', 'about'];
@@ -28,14 +28,12 @@ function initialTheme(): Theme {
 
 export function App() {
   const [route, setRoute] = useState<Route>(parseHash);
-  const [lang, setLang] = useState<Lang>(() => readJSON<Lang>('lb-lang', 'en'));
   const [theme, setTheme] = useState<Theme>(initialTheme);
   const [core, setCore] = useState<CoreData | null>(null);
   const [names, setNames] = useState<NamesData | null>(null);
   const [meta, setMeta] = useState<MetaData | null>(null);
   const [error, setError] = useState(false);
   const [card, setCard] = useState<string | null>(null);
-  const t = STRINGS[lang];
 
   useEffect(() => {
     const onHash = () => {
@@ -62,26 +60,17 @@ export function App() {
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#11181b' : '#f3eee3');
   }, [theme]);
 
-  useEffect(() => {
-    document.documentElement.lang = lang;
-  }, [lang]);
-
   const index = useMemo(() => (core ? buildSearchIndex(core, names) : null), [core, names]);
   const openCard = useCallback((id: string) => setCard(id), []);
 
   const ctx = useMemo<AppCtx | null>(
     () =>
       core && index
-        ? { core, index, lang, t, name: (id: string) => displayName(core, id, lang), openCard }
+        ? { core, index, t, name: (id: string) => displayName(core, id), openCard }
         : null,
-    [core, index, lang, t, openCard],
+    [core, index, openCard],
   );
 
-  const toggleLang = () => {
-    const next: Lang = lang === 'en' ? 'ru' : 'en';
-    setLang(next);
-    writeJSON('lb-lang', next);
-  };
   const toggleTheme = () => {
     const next: Theme = theme === 'dark' ? 'light' : 'dark';
     setTheme(next);
@@ -106,9 +95,6 @@ export function App() {
           </span>
         </a>
         <div class="top-actions">
-          <button class="chip-btn" onClick={toggleLang} title={t.switchLang} aria-label={t.switchLang}>
-            {lang === 'en' ? 'RU' : 'EN'}
-          </button>
           <button
             class="icon-btn"
             onClick={toggleTheme}
@@ -132,7 +118,7 @@ export function App() {
           <p class="notice">{t.loadError}</p>
         ) : !ctx ? (
           route === 'about' ? (
-            <About meta={meta} t={t} lang={lang} />
+            <About meta={meta} />
           ) : (
             <Loading label={t.loading} />
           )
@@ -141,7 +127,7 @@ export function App() {
             {route === 'play' && <GuessGame />}
             {route === 'typology' && <Typology />}
             {route === 'rules' && <Rules />}
-            {route === 'about' && <About meta={meta} t={t} lang={lang} />}
+            {route === 'about' && <About meta={meta} />}
             {card && <LanguageCard id={card} onClose={() => setCard(null)} />}
           </AppContext.Provider>
         )}

@@ -43,12 +43,11 @@ export const core: CoreData = {
     quch: L('Quechua', 'quec', 'South America', -13, -72),
     nava: L('Navajo', 'atha', 'North America', 36, -109),
   },
-  ru: { russ: 'Русский' },
 };
 
 const f = (id: string, domain = 'nominal domain'): Feature => ({
   id, name: `${id}?`, domain, group: '', values: { '0': 'absent', '1': 'present' }, summary: '',
-  en: { has: `has ${id}`, lacks: `lacks ${id}` }, ru: null,
+  en: { has: `has ${id}`, lacks: `lacks ${id}` },
 });
 
 export const features: Feature[] = [f('F0'), f('F1'), f('F2', 'clause')];

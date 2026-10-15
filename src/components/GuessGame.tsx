@@ -23,7 +23,7 @@ const statsKey = (diff: Difficulty) => `lb-stats-${diff}`;
 const SALT = 'langbang-daily-v1';
 
 export function GuessGame() {
-  const { core, t, name, openCard, lang } = useApp();
+  const { core, t, name, openCard } = useApp();
   const [mode, setMode] = useState<Mode>(() => readJSON<Mode>('lb-mode', 'daily'));
   const [diff, setDiff] = useState<Difficulty>(() => readJSON<Difficulty>('lb-diff', 'normal'));
   const [day, setDay] = useState(() => dayNumber());
@@ -163,7 +163,7 @@ export function GuessGame() {
                       </span>
                       {!r.correct && r.km != null && (
                         <span class="guess-dist" title={r.dir ? fmt(t.directionTo, { dir: t.dirs[r.dir] }) : ''}>
-                          {Math.round(r.km).toLocaleString(lang)} km
+                          {Math.round(r.km).toLocaleString('en')} km
                           {r.bearing != null && (
                             <svg class="dir" viewBox="-8 -8 16 16" width="16" height="16" style={{ transform: `rotate(${r.bearing}deg)` }} aria-hidden="true">
                               <path d="M0 -6 L4 4 L0 2 L-4 4 Z" />
@@ -208,7 +208,7 @@ function Attempts({ game }: { game: GameState }) {
 }
 
 function Hints({ game, onHint }: { game: GameState; onHint: (k: HintKind) => void }) {
-  const { core, t, lang } = useApp();
+  const { core, t } = useApp();
   const row = core.languages[game.target];
   const label: Record<HintKind, string> = { area: t.hintArea, status: t.hintStatus, country: t.hintCountry };
   const reveal = (k: HintKind): string => {
@@ -220,7 +220,7 @@ function Hints({ game, onHint }: { game: GameState; onHint: (k: HintKind) => voi
     const c = countries[game.target.charCodeAt(0) % countries.length];
     let cname = c;
     try {
-      cname = new Intl.DisplayNames([lang], { type: 'region' }).of(c) ?? c;
+      cname = new Intl.DisplayNames(['en'], { type: 'region' }).of(c) ?? c;
     } catch {
       /* old browsers */
     }

@@ -1,5 +1,5 @@
 import { SearchIndex } from './search';
-import type { BibEntry, CoreData, Feature, GrambankData, Lang, MetaData, NamesData } from './types';
+import type { BibEntry, CoreData, Feature, GrambankData, MetaData, NamesData } from './types';
 
 declare const __DATA_VERSION__: string;
 
@@ -34,16 +34,14 @@ export async function loadBib(gc: string): Promise<BibEntry[]> {
   }
 }
 
-export function displayName(core: CoreData, id: string, lang: Lang): string {
-  if (lang === 'ru' && core.ru[id]) return core.ru[id];
+export function displayName(core: CoreData, id: string): string {
   return core.languages[id]?.[0] ?? core.families[id]?.[0] ?? id;
 }
 
-/** Search index over all guessable languages: Glottolog names, Russian names, alternative names. */
+/** Search index over all guessable languages: Glottolog names and alternative names. */
 export function buildSearchIndex(core: CoreData, names: NamesData | null): SearchIndex {
   const ix = new SearchIndex();
   for (const [id, row] of Object.entries(core.languages)) ix.add(id, row[0], 0);
-  for (const [id, n] of Object.entries(core.ru)) ix.add(id, n, 1);
   if (names) for (const [id, list] of Object.entries(names)) for (const n of list) ix.add(id, n, 2);
   return ix;
 }

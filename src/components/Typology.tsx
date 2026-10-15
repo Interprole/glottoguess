@@ -163,9 +163,9 @@ function QuestionView({ q, gb, chosen, onAnswer, onNext, last }: {
   onNext: () => void;
   last: boolean;
 }) {
-  const { core, t, lang, name, openCard } = useApp();
+  const { core, t, name, openCard } = useApp();
   const f = q.feature;
-  const text = questionText(f, q.value, lang, t);
+  const text = questionText(f, q.value, t);
   return (
     <div class="panel question">
       <p class="q-domain">{t.domains[f.domain] ?? f.domain}</p>
@@ -199,7 +199,7 @@ function QuestionView({ q, gb, chosen, onAnswer, onNext, last }: {
         <div class={`feedback ${chosen === q.answer ? 'ok' : 'bad'}`}>
           <p class="verdict">{chosen === q.answer ? t.correctAns : t.wrongAns}</p>
           <h3>{t.explanation}</h3>
-          <p>{explanation(f, lang)}</p>
+          <p>{explanation(f)}</p>
           <p class="orig">
             <span class="label">{t.originalWording}:</span> <em>{f.name}</em>
           </p>

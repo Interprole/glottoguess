@@ -87,18 +87,18 @@ def test_bib_reader_and_reference_selection(raw: Path):
 
 
 def test_names(raw: Path):
-    alt, ru = bd.load_names(raw / "glottolog", {"aaaa1234", "baba1234"})
-    assert ru == {"aaaa1234": "Аа"}
+    alt = bd.load_names(raw / "glottolog", {"aaaa1234", "baba1234"})
     assert "Aa" in alt["aaaa1234"]          # lexvo en name with ' language' stripped
     assert "Old Aa" in alt["aaaa1234"]
     assert "Aa-de" not in alt["aaaa1234"]   # other lexvo languages are not used
+    assert "Аа язык" not in alt["aaaa1234"]
     assert "baba1234" not in alt            # 'not specified' is dropped
 
 
 def test_full_build(raw: Path, tmp_path: Path):
     out = tmp_path / "out"
     texts = tmp_path / "feature_texts.json"
-    texts.write_text(json.dumps([{"id": "GB020", "en": {"has": "has articles"}, "ru": {"has": "есть артикли"}}]))
+    texts.write_text(json.dumps([{"id": "GB020", "en": {"has": "has articles"}, "ru": {"has": "есть артикли"}}]))  # ru is not shipped
     logs = []
     stats = bd.build(raw, out, texts, log=logs.append)
     core = json.loads((out / "core.json").read_text())
@@ -123,6 +123,7 @@ def test_full_build(raw: Path, tmp_path: Path):
     assert gbj["features"] == ["GB020", "GB024", "GB030"]
     feats = {f["id"]: f for f in json.loads((out / "features.json").read_text())}
     assert feats["GB020"]["en"] == {"has": "has articles"}
+    assert "ru" not in feats["GB020"] and "ru" not in core
     assert feats["GB020"]["summary"] == "This is about articles. Really."
     assert feats["GB024"]["values"] == {"1": "Num-N", "2": "N-Num"}
     assert stats["missing_feature_texts"] == ["GB024", "GB030"]

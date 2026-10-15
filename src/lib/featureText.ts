@@ -1,9 +1,9 @@
 import type { Strings } from './i18n';
-import type { Feature, Lang } from './types';
+import type { Feature } from './types';
 
 /** Predicate fragment for a feature value ("has definite articles"), or null if not available. */
-export function statement(f: Feature, value: string, lang: Lang): string | null {
-  const tx = (lang === 'ru' ? f.ru : f.en) ?? f.en;
+export function statement(f: Feature, value: string): string | null {
+  const tx = f.en;
   if (!tx) return null;
   if (tx.values) return tx.values[value] ?? null;
   if (value === '1') return tx.has ?? null;
@@ -12,8 +12,8 @@ export function statement(f: Feature, value: string, lang: Lang): string | null 
 }
 
 /** Full question text; falls back to Grambank's original wording. */
-export function questionText(f: Feature, value: string, lang: Lang, t: Strings): string {
-  const s = statement(f, value, lang);
+export function questionText(f: Feature, value: string, t: Strings): string {
+  const s = statement(f, value);
   if (s) return t.whichHas.replace('{q}', s);
   const label = f.values[value] ?? value;
   return `${f.name} → ${label}`;
@@ -28,7 +28,6 @@ export function valueLabel(f: Feature, value: string | undefined, t: Strings): s
 }
 
 /** Explanation shown after an answer. */
-export function explanation(f: Feature, lang: Lang): string {
-  if (lang === 'ru' && f.ru?.note) return f.ru.note;
+export function explanation(f: Feature): string {
   return f.summary || f.name;
 }

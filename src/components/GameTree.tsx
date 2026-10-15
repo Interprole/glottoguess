@@ -30,7 +30,7 @@ type StationRow = { idx: number; id: string; y: number; leaves: { r: GuessResult
  * stations. Non-genealogical levels (world, macroarea) are dashed.
  */
 export function GameTree({ target, results, status }: Props) {
-  const { core, t, name, openCard, lang } = useApp();
+  const { core, t, name, openCard } = useApp();
   const ref = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState(360);
 
@@ -193,7 +193,7 @@ export function GameTree({ target, results, status }: Props) {
           st.leaves.map(({ r, y: ly }) => {
             const tr = tierOf(r);
             const via = r.branchId && r.branchId !== r.id ? fmt(t.via, { name: stationLabel(r.branchId) }) : '';
-            const dist = r.km != null ? fmt(t.distance, { km: Math.round(r.km).toLocaleString(lang) }) : '';
+            const dist = r.km != null ? fmt(t.distance, { km: Math.round(r.km).toLocaleString('en') }) : '';
             const meta = [via, dist].filter(Boolean).join(' · ');
             return (
               <g key={`lf-${r.id}`} class={`leaf t-${tr}`}>

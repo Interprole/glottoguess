@@ -21,7 +21,6 @@ export interface CoreData {
   areas: string[];
   families: Record<string, FamilyRow>;
   languages: Record<string, LanguageRow>;
-  ru: Record<string, string>;
 }
 
 export type NamesData = Record<string, string[]>;
@@ -36,7 +35,6 @@ export interface FeatureTexts {
   has?: string;
   lacks?: string;
   values?: Record<string, string>;
-  note?: string;
 }
 
 export interface Feature {
@@ -47,7 +45,6 @@ export interface Feature {
   values: Record<string, string>;
   summary: string;
   en: FeatureTexts | null;
-  ru: FeatureTexts | null;
 }
 
 export interface DatasetMeta {
@@ -75,4 +72,3 @@ export const FLAG_NORMAL = 4;
 export const FLAG_HARD = 8;
 
 export type Difficulty = 'normal' | 'hard';
-export type Lang = 'en' | 'ru';

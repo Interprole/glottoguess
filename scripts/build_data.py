@@ -89,7 +89,7 @@ HHTYPE_RANK = {
     "unknown": 12,
 }
 MAX_REFS = 5
-ALT_NAME_PROVIDERS_EXCLUDED = {"lexvo"}  # lexvo: only "en" and "ru" are used
+ALT_NAME_PROVIDERS_EXCLUDED = {"lexvo"}  # lexvo: only "en" names are used
 
 
 # --------------------------------------------------------------------------- io
@@ -190,10 +190,9 @@ def load_glottolog(gdir: Path) -> dict[str, Languoid]:
     return langs
 
 
-def load_names(gdir: Path, ids: set[str]) -> tuple[dict[str, list[str]], dict[str, str]]:
-    """Alternative names (all providers, lexvo only en) and Russian names (lexvo ru)."""
+def load_names(gdir: Path, ids: set[str]) -> dict[str, list[str]]:
+    """Alternative names: all providers, but of the Wikipedia-derived lexvo names only English ones."""
     alt: dict[str, list[str]] = collections.defaultdict(list)
-    ru: dict[str, str] = {}
     for r in read_csv(gdir / "cldf" / "names.csv"):
         gc = r["Language_ID"]
         if gc not in ids:
@@ -202,23 +201,11 @@ def load_names(gdir: Path, ids: set[str]) -> tuple[dict[str, list[str]], dict[st
         if not name or name.lower() == "not specified" or len(name) > 60:
             continue
         if r["Provider"] in ALT_NAME_PROVIDERS_EXCLUDED:
-            if r["lang"] == "ru":
-                if gc not in ru:
-                    ru[gc] = clean_ru_name(name)
-                continue
             if r["lang"] != "en":
                 continue
             name = re.sub(r"\s+language$", "", name, flags=re.I)
         alt[gc].append(name)
-    return alt, ru
-
-
-def clean_ru_name(name: str) -> str:
-    """'Русский язык' -> 'Русский'; 'Язык маори' -> 'Маори'."""
-    n = re.sub(r"\s*\(язык\)\s*$", "", name)
-    n = re.sub(r"\s+(язык|языки|диалект)$", "", n, flags=re.I)
-    n = re.sub(r"^(язык|языки)\s+", "", n, flags=re.I)
-    return n[:1].upper() + n[1:] if n else name
+    return alt
 
 
 # ------------------------------------------------------------------- the tree
@@ -587,7 +574,7 @@ def build(raw: Path, out: Path, feature_texts_path: Path, with_bib: bool = True,
     gb = load_grambank(gbdir, langs)
     wals, wals200 = load_wals(wdir)
     wiki = wiki_edition_counts(gdir)
-    alt, ru = load_names(gdir, set(tree.languages))
+    alt = load_names(gdir, set(tree.languages))
 
     # ------------------------------------------------------------- core.json
     families_out = {}
@@ -638,7 +625,6 @@ def build(raw: Path, out: Path, feature_texts_path: Path, with_bib: bool = True,
         "areas": MACROAREAS,
         "families": families_out,
         "languages": languages_out,
-        "ru": dict(sorted(ru.items())),
     })
 
     # ------------------------------------------------------------ names.json
@@ -681,7 +667,6 @@ def build(raw: Path, out: Path, feature_texts_path: Path, with_bib: bool = True,
             "values": gb["codes"].get(fid, {}),
             "summary": summary_paragraph(p["Description"]),
             "en": (t or {}).get("en"),
-            "ru": (t or {}).get("ru"),
         })
     sizes["features.json"] = write_json(out / "features.json", features_out)
 

@@ -17,7 +17,7 @@ const CARD_FEATURES = [
 const MAX_CARD_FEATURES = 7;
 
 export function LanguageCard({ id, onClose }: { id: string; onClose: () => void }) {
-  const { core, t, name, lang } = useApp();
+  const { core, t, name } = useApp();
   const row = core.languages[id];
   const [alt, setAlt] = useState<string[]>([]);
   const [refs, setRefs] = useState<BibEntry[] | null>(null);
@@ -34,13 +34,13 @@ export function LanguageCard({ id, onClose }: { id: string; onClose: () => void 
   }, [id]);
 
   if (!row) return null;
-  const [enName, , area, lat, lon, aes, countries, iso, category] = row;
+  const [, , area, lat, lon, aes, countries, iso, category] = row;
   const lin = lineage(core, id);
   const isolate = lin.length === 1;
 
   let regionNames: Intl.DisplayNames | null = null;
   try {
-    regionNames = new Intl.DisplayNames([lang], { type: 'region' });
+    regionNames = new Intl.DisplayNames(['en'], { type: 'region' });
   } catch {
     regionNames = null;
   }
@@ -60,7 +60,7 @@ export function LanguageCard({ id, onClose }: { id: string; onClose: () => void 
       if (v === '?' || v === '-') continue;
       // verb-position features: only list the ones that hold (Grambank allows several)
       if (['GB131', 'GB132', 'GB133'].includes(fid) && v !== '1') continue;
-      const text = statement(f, v, lang);
+      const text = statement(f, v);
       if (text) features.push({ f, text });
     }
   }
@@ -71,7 +71,6 @@ export function LanguageCard({ id, onClose }: { id: string; onClose: () => void 
       <div class="card">
         <div class="card-top">
           <div class="card-ids">
-            {lang === 'ru' && title !== enName && <p class="card-en">{enName}</p>}
             <p class="card-codes">
               <span>
                 {t.cardGlottocode}:{' '}

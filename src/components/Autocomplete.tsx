@@ -9,7 +9,7 @@ interface Props {
 }
 
 export function Autocomplete({ onPick, exclude, disabled }: Props) {
-  const { index, t, name, core, lang } = useApp();
+  const { index, t, name, core } = useApp();
   const [q, setQ] = useState('');
   const [active, setActive] = useState(0);
   const [open, setOpen] = useState(false);
@@ -99,14 +99,12 @@ export function Autocomplete({ onPick, exclude, disabled }: Props) {
               >
                 <span class="ac-name">
                   {main}
-                  {h.kind === 2 || (h.kind === 1 && lang !== 'ru') ? (
+                  {h.kind !== 0 && (
                     <span class="ac-alt">
                       {' '}
                       · {t.aka} <em>{h.name}</em>
                     </span>
-                  ) : h.kind === 0 && lang === 'ru' && main !== h.name ? (
-                    <span class="ac-alt"> · {h.name}</span>
-                  ) : null}
+                  )}
                 </span>
                 <span class="ac-meta">
                   {used ? t.alreadyGuessed : `${fam}${area ? ' · ' + (t.areas[area] ?? area) : ''}`}

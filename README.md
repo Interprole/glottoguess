@@ -4,9 +4,9 @@
 
 Live: https://interprole.github.io/langbang/ (after the first deploy from `main`)
 
-| Guess the language (desktop) | Mobile, dark, Russian UI | Typology quiz |
+| Guess the language (desktop) | Mobile, dark theme | Typology quiz |
 |---|---|---|
-| ![](docs/screenshots/game-desktop.png) | ![](docs/screenshots/game-mobile-dark-ru.png) | ![](docs/screenshots/typology.png) |
+| ![](docs/screenshots/game-desktop.png) | ![](docs/screenshots/game-mobile-dark.png) | ![](docs/screenshots/typology.png) |
 
 | Language card | Solved puzzle | Hard typology, dark |
 |---|---|---|
@@ -71,7 +71,7 @@ and `src/components/` the UI (Preact). CI runs both test suites and the build on
 
 ## LangBang по-русски
 
-Лингвистические игры на открытых данных. Интерфейс на английском и русском (переключатель EN/RU), светлая и тёмная темы.
+Лингвистические игры на открытых данных. Интерфейс сайта — на английском; светлая и тёмная темы.
 
 **«Угадай язык»** — ежедневная генеалогическая загадка, как Metazooa. После каждой догадки показывается самый нижний
 общий узел классификации Glottolog с загаданным языком, и дерево достраивается. Над семьями есть уровень макроареалов:
@@ -83,7 +83,7 @@ and `src/components/` the UI (Preact). CI runs both test suites and the build on
 никогда не считаются за «нет». Есть лёгкий и сложный уровни и фильтр по темам.
 
 Данные: Glottolog 5.3, Grambank v1.0.3, WALS v2020.6 (CC BY 4.0). Цитирование — выше и на странице «О проекте».
-Человеческие формулировки признаков (англ./рус.) лежат в `data/feature_texts.json`, рядом с исходными
+Человеческие формулировки признаков лежат в `data/feature_texts.json` (на сайте используются английские, русские сохранены для справки), рядом с исходными
 формулировками Grambank, для ручной проверки.
 
 Запуск: `python scripts/fetch_data.py && python scripts/build_data.py`, затем `npm ci && npm run dev`.
