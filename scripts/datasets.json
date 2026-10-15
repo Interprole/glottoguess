@@ -1,0 +1,26 @@
+{
+  "glottolog": {
+    "repo": "glottolog/glottolog-cldf",
+    "tag": "v5.3",
+    "title": "Glottolog 5.3",
+    "url": "https://glottolog.org",
+    "license": "CC-BY-4.0",
+    "citation": "Hammarström, Harald & Forkel, Robert & Haspelmath, Martin & Bank, Sebastian. 2026. Glottolog 5.3. Leipzig: Max Planck Institute for Evolutionary Anthropology. (Available online at https://glottolog.org)"
+  },
+  "grambank": {
+    "repo": "grambank/grambank",
+    "tag": "v1.0.3",
+    "title": "Grambank v1.0.3",
+    "url": "https://grambank.clld.org",
+    "license": "CC-BY-4.0",
+    "citation": "Skirgård, Hedvig et al. 2023. Grambank reveals the importance of genealogical constraints on linguistic diversity and highlights the impact of language loss. Science Advances 9(16): eadg6175. https://doi.org/10.1126/sciadv.adg6175"
+  },
+  "wals": {
+    "repo": "cldf-datasets/wals",
+    "tag": "v2020.6",
+    "title": "WALS Online v2020.6",
+    "url": "https://wals.info",
+    "license": "CC-BY-4.0",
+    "citation": "Dryer, Matthew S. & Haspelmath, Martin (eds.) 2013. The World Atlas of Language Structures Online. Leipzig: Max Planck Institute for Evolutionary Anthropology. (Available online at https://wals.info)"
+  }
+}
