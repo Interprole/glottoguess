@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'preact/hooks';
 import { AppContext, type AppCtx } from './app-context';
 import { About } from './components/About';
+import { AuthButton } from './components/AuthButton';
+import { DuelPage, DuelsPage } from './components/Duels';
 import { GuessGame } from './components/GuessGame';
 import { LanguageCard } from './components/LanguageCard';
 import { Logo } from './components/Logo';
@@ -9,25 +11,28 @@ import { Typology } from './components/Typology';
 import { buildSearchIndex, displayName, loadCore, loadMeta, loadNames } from './lib/data';
 import { t } from './lib/i18n';
 import { readJSON, writeJSON } from './lib/storage';
+import type { CloudUser } from './lib/cloud';
 import type { CoreData, MetaData, NamesData } from './lib/types';
 
-type Route = 'play' | 'typology' | 'rules' | 'about';
-const ROUTES: Route[] = ['play', 'typology', 'rules', 'about'];
+type Route = 'play' | 'typology' | 'duels' | 'duel' | 'rules' | 'about';
+const ROUTES: Route[] = ['play', 'typology', 'duels', 'duel', 'rules', 'about'];
 
-function parseHash(): Route {
-  const h = location.hash.replace(/^#\/?/, '').split(/[/?]/)[0];
-  return (ROUTES as string[]).includes(h) ? (h as Route) : 'play';
+function parseHash(): { route: Route; param: string } {
+  const [h, param = ''] = location.hash.replace(/^#\/?/, '').split(/[/?]/);
+  const route = (ROUTES as string[]).includes(h) ? (h as Route) : 'play';
+  return { route: route === 'duel' && !param ? 'duels' : route, param };
 }
 
 type Theme = 'light' | 'dark';
 function initialTheme(): Theme {
-  const saved = readJSON<Theme | null>('lb-theme', null);
+  const saved = readJSON<Theme | null>('gg-theme', null);
   if (saved) return saved;
   return window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
 export function App() {
-  const [route, setRoute] = useState<Route>(parseHash);
+  const [{ route, param }, setRoute] = useState(parseHash);
+  const [user, setUser] = useState<CloudUser | null>(null);
   const [theme, setTheme] = useState<Theme>(initialTheme);
   const [core, setCore] = useState<CoreData | null>(null);
   const [names, setNames] = useState<NamesData | null>(null);
@@ -42,6 +47,27 @@ export function App() {
     };
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
+  }, []);
+
+  // Firebase is loaded lazily, after the first render
+  useEffect(() => {
+    let stop: (() => void) | undefined;
+    import('./lib/cloud')
+      .then((c) => {
+        stop = c.watchUser(setUser);
+      })
+      .catch((e) => console.warn('Firebase unavailable', e));
+    return () => stop?.();
+  }, []);
+
+  const signIn = useCallback(async () => {
+    try {
+      const c = await import('./lib/cloud');
+      await c.signIn();
+    } catch (e) {
+      console.error(e);
+      alert(t.signInFailed);
+    }
   }, []);
 
   useEffect(() => {
@@ -66,20 +92,21 @@ export function App() {
   const ctx = useMemo<AppCtx | null>(
     () =>
       core && index
-        ? { core, index, t, name: (id: string) => displayName(core, id), openCard }
+        ? { core, index, t, name: (id: string) => displayName(core, id), openCard, user, signIn }
         : null,
-    [core, index, openCard],
+    [core, index, openCard, user, signIn],
   );
 
   const toggleTheme = () => {
     const next: Theme = theme === 'dark' ? 'light' : 'dark';
     setTheme(next);
-    writeJSON('lb-theme', next);
+    writeJSON('gg-theme', next);
   };
 
   const nav: [Route, string][] = [
     ['play', t.navDaily],
     ['typology', t.navTypology],
+    ['duels', t.navDuels],
     ['rules', t.navRules],
     ['about', t.navAbout],
   ];
@@ -87,14 +114,15 @@ export function App() {
   return (
     <div class="shell">
       <header class="topbar">
-        <a class="brand" href="#/play" aria-label="LangBang">
+        <a class="brand" href="#/play" aria-label="GlottoGuess">
           <Logo />
           <span class="brand-text">
-            <span class="brand-name">LangBang</span>
+            <span class="brand-name">GlottoGuess</span>
             <span class="brand-tag">{t.tagline}</span>
           </span>
         </a>
         <div class="top-actions">
+          <AuthButton user={user} signIn={signIn} />
           <button
             class="icon-btn"
             onClick={toggleTheme}
@@ -106,7 +134,7 @@ export function App() {
         </div>
         <nav class="tabs" aria-label="Main">
           {nav.map(([r, label]) => (
-            <a key={r} href={`#/${r}`} class={route === r ? 'tab active' : 'tab'} aria-current={route === r ? 'page' : undefined}>
+            <a key={r} href={`#/${r}`} class={route === r || (r === 'duels' && route === 'duel') ? 'tab active' : 'tab'} aria-current={route === r ? 'page' : undefined}>
               {label}
             </a>
           ))}
@@ -126,6 +154,8 @@ export function App() {
           <AppContext.Provider value={ctx}>
             {route === 'play' && <GuessGame />}
             {route === 'typology' && <Typology />}
+            {route === 'duels' && <DuelsPage />}
+            {route === 'duel' && <DuelPage id={param} />}
             {route === 'rules' && <Rules />}
             {route === 'about' && <About meta={meta} />}
             {card && <LanguageCard id={card} onClose={() => setCard(null)} />}
@@ -147,11 +177,16 @@ export function App() {
           <a href="https://wals.info" target="_blank" rel="noopener">
             {meta?.datasets.wals.title ?? 'WALS Online'}
           </a>{' '}
-          — {t.footerLicense}. <a href="#/about">{t.navAbout}</a> ·{' '}
-          <a href="https://github.com/Interprole/langbang" target="_blank" rel="noopener">
+          ,{' '}
+          <a href="https://github.com/google-research/url-nlp/tree/main/linguameta" target="_blank" rel="noopener">
+            LinguaMeta
+          </a>{' '}
+          — CC BY 4.0 / CC BY-SA 4.0. <a href="#/about">{t.navAbout}</a> ·{' '}
+          <a href="https://github.com/Interprole/glottoguess" target="_blank" rel="noopener">
             {t.footerCode}
           </a>
         </p>
+        <p class="byline">{t.madeBy.replace('{name}', 'Gleb Bubnov')}</p>
       </footer>
     </div>
   );

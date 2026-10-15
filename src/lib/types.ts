@@ -1,6 +1,6 @@
 /** Shapes of the JSON files produced by scripts/build_data.py. */
 
-/** [name, parent, area, lat, lon, aes, countries, iso, category, flags] */
+/** [name, parent, area, lat, lon, aes, countries, iso, category, flags, speakers (LinguaMeta)] */
 export type LanguageRow = [
   string,
   string | null,
@@ -12,6 +12,7 @@ export type LanguageRow = [
   string,
   string,
   number,
+  (number | null)?,
 ];
 /** [name, parent] or, for top-level families, [name, null, area] */
 export type FamilyRow = [string, string | null, (string | null)?];
@@ -52,12 +53,13 @@ export interface DatasetMeta {
   tag: string;
   repo: string;
   url: string;
+  ref_url?: string;
   license: string;
   citation: string;
 }
 
 export interface MetaData {
-  datasets: Record<'glottolog' | 'grambank' | 'wals', DatasetMeta>;
+  datasets: Record<'glottolog' | 'grambank' | 'wals' | 'linguameta', DatasetMeta>;
   normal_min_wiki_editions: number;
   min_shared_features: number;
   stats: Record<string, number>;

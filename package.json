@@ -1,7 +1,7 @@
 {
-  "name": "langbang",
+  "name": "glottoguess",
   "version": "0.1.0",
-  "description": "Linguistic games on open data (Glottolog, Grambank, WALS).",
+  "description": "GlottoGuess: language games on open linguistic data (Glottolog, Grambank, WALS).",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Interprole/langbang.git"
+    "url": "git+https://github.com/Interprole/glottoguess.git"
   },
   "license": "MIT",
-  "homepage": "https://github.com/Interprole/langbang#readme",
+  "homepage": "https://github.com/Interprole/glottoguess#readme",
   "devDependencies": {
     "@preact/preset-vite": "^2.10.6",
     "@types/d3-geo": "^3.1.1",
@@ -32,10 +32,12 @@
     "@fontsource/ibm-plex-mono": "^5.3.0",
     "@fontsource/ibm-plex-sans": "^5.3.0",
     "d3-geo": "^3.1.1",
+    "firebase": "^11.10.0",
     "preact": "^10.29.8",
     "topojson-client": "^3.1.0",
     "world-atlas": "^2.0.2"
   },
   "private": true,
-  "type": "module"
+  "type": "module",
+  "author": "Gleb Bubnov"
 }

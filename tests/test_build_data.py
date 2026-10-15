@@ -86,6 +86,12 @@ def test_bib_reader_and_reference_selection(raw: Path):
     assert bd.format_reference(*entries["r3"]) == "Smith, John. 2010. Aa sketch. Journal of Aa 3."
 
 
+def test_speakers(raw: Path):
+    langs = bd.load_glottolog(raw / "glottolog")
+    sp = bd.load_speakers(raw / "linguameta", langs)
+    assert sp == {"aaaa1234": 120000, "abab1234": 5000, "baba1234": 300}
+
+
 def test_names(raw: Path):
     alt = bd.load_names(raw / "glottolog", {"aaaa1234", "baba1234"})
     assert "Aa" in alt["aaaa1234"]          # lexvo en name with ' language' stripped
@@ -116,6 +122,8 @@ def test_full_build(raw: Path, tmp_path: Path):
     assert not flags["isol1234"] & bd.FLAG_HARD
     assert not flags["sgnl1234"] & bd.FLAG_HARD
     assert core["languages"]["sgnl1234"][8] == "sign"
+    assert core["languages"]["aaaa1234"][10] == 120000
+    assert core["languages"]["acac1234"][10] is None
     assert stats["pool_normal"] == 2 and stats["pool_hard"] == 4
     assert stats["tree_depth_max"] == 2
 

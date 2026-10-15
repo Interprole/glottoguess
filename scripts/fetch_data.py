@@ -3,8 +3,9 @@
 
 Each dataset is fetched as a shallow git clone of a *release tag* so that the
 data are exactly those of a published, citable release (the same content that
-is archived on Zenodo).  Versions are pinned in scripts/datasets.json; bump the
-tag there to update.
+is archived on Zenodo).  LinguaMeta has no releases, so it is pinned to a
+commit.  Versions are pinned in scripts/datasets.json; bump them there to
+update.
 
 Usage:
     python scripts/fetch_data.py            # fetch everything missing
@@ -14,6 +15,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -24,26 +26,38 @@ RAW = ROOT / "raw"
 DATASETS = json.loads((ROOT / "scripts" / "datasets.json").read_text(encoding="utf-8"))
 
 
+def git(*args: str, cwd: Path | None = None) -> None:
+    subprocess.run(["git", "-c", "advice.detachedHead=false", *args], check=True, cwd=cwd,
+                   env={"GIT_LFS_SKIP_SMUDGE": "1", **os.environ})
+
+
 def fetch(name: str, spec: dict, force: bool) -> None:
+    """Shallow-clone a release tag, or (for datasets without releases) a pinned commit,
+    optionally restricted to a sub-directory (``sparse``)."""
+    ref = spec.get("tag") or spec["commit"]
     target = RAW / name
-    marker = target / ".langbang-tag"
+    marker = target / ".fetched-ref"
     if target.exists() and not force:
-        if marker.exists() and marker.read_text().strip() == spec["tag"]:
-            print(f"[fetch] {name} {spec['tag']} already present")
+        if marker.exists() and marker.read_text().strip() == ref:
+            print(f"[fetch] {name} {ref} already present")
             return
-        print(f"[fetch] {name}: present but not {spec['tag']}, re-downloading")
+        print(f"[fetch] {name}: present but not {ref}, re-downloading")
     if target.exists():
         shutil.rmtree(target)
     RAW.mkdir(exist_ok=True)
     url = f"https://github.com/{spec['repo']}"
-    print(f"[fetch] cloning {url} @ {spec['tag']}")
-    subprocess.run(
-        ["git", "-c", "advice.detachedHead=false", "clone", "--quiet", "--depth", "1",
-         "--branch", spec["tag"], url, str(target)],
-        check=True,
-        env={"GIT_LFS_SKIP_SMUDGE": "1", **__import__("os").environ},
-    )
-    marker.write_text(spec["tag"] + "\n")
+    print(f"[fetch] {url} @ {ref}")
+    if "tag" in spec:
+        git("clone", "--quiet", "--depth", "1", "--branch", spec["tag"], url, str(target))
+    else:
+        target.mkdir()
+        git("init", "--quiet", cwd=target)
+        git("remote", "add", "origin", url, cwd=target)
+        if spec.get("sparse"):
+            git("sparse-checkout", "set", spec["sparse"], cwd=target)
+        git("fetch", "--quiet", "--depth", "1", "--filter=blob:none", "origin", spec["commit"], cwd=target)
+        git("checkout", "--quiet", "FETCH_HEAD", cwd=target)
+    marker.write_text(ref + "\n")
 
 
 def main() -> int:

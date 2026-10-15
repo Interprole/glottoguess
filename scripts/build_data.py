@@ -544,6 +544,37 @@ def load_wals(wdir: Path) -> tuple[set[str], set[str]]:
     return {r["Glottocode"] for r in rows}, {r["Glottocode"] for r in rows if r.get("Samples_200") == "true"}
 
 
+def load_speakers(lmdir: Path, langs: dict[str, Languoid]) -> dict[str, int]:
+    """Estimated number of speakers from LinguaMeta, keyed by Glottolog language-level Glottocode.
+
+    Rows are matched by Glottocode (dialect codes are lifted to their language),
+    falling back to the ISO 639-3 code; macrolanguage rows are skipped.  When
+    several rows map to one language the largest estimate is kept.
+    """
+    path = lmdir / "linguameta" / "linguameta.tsv"
+    if not path.exists():
+        return {}
+    by_iso = {lg.iso: gc for gc, lg in langs.items() if lg.iso and lg.level == "language"}
+    out: dict[str, int] = {}
+    with path.open(encoding="utf-8", newline="") as f:
+        for r in csv.DictReader(f, delimiter="\t"):
+            if r.get("is_macrolanguage") == "True" or not r.get("estimated_number_of_speakers"):
+                continue
+            try:
+                n = int(float(r["estimated_number_of_speakers"]))
+            except ValueError:
+                continue
+            gc = r.get("glottocode") or ""
+            lg = langs.get(gc)
+            if lg is not None and lg.level == "dialect" and lg.language_id:
+                gc = lg.language_id
+            elif lg is None or lg.level != "language":
+                gc = by_iso.get(r.get("iso_639_3_code") or "", "")
+            if gc:
+                out[gc] = max(n, out.get(gc, 0))
+    return out
+
+
 def wiki_edition_counts(gdir: Path) -> collections.Counter:
     c: collections.Counter = collections.Counter()
     for r in read_csv(gdir / "cldf" / "names.csv"):
@@ -575,6 +606,7 @@ def build(raw: Path, out: Path, feature_texts_path: Path, with_bib: bool = True,
     wals, wals200 = load_wals(wdir)
     wiki = wiki_edition_counts(gdir)
     alt = load_names(gdir, set(tree.languages))
+    speakers = load_speakers(raw / "linguameta", langs)
 
     # ------------------------------------------------------------- core.json
     families_out = {}
@@ -617,6 +649,7 @@ def build(raw: Path, out: Path, feature_texts_path: Path, with_bib: bool = True,
             lg.iso,
             CATEGORY_CODES[lg.category],
             flags,
+            speakers.get(gc),
         ]
 
     sizes = {}
@@ -701,6 +734,9 @@ def build(raw: Path, out: Path, feature_texts_path: Path, with_bib: bool = True,
     # ------------------------------------------------------------- statistics
     stats = compute_stats(tree, pools, gb_values, gb["feature_ids"], gb)
     stats["references"] = n_refs
+    stats["speakers_known"] = sum(1 for gc in tree.languages if gc in speakers)
+    stats["speakers_known_normal"] = sum(1 for gc in pools["normal"] if gc in speakers)
+    stats["speakers_known_hard"] = sum(1 for gc in pools["hard"] if gc in speakers)
     stats["missing_feature_texts"] = missing_texts
     stats["sizes_bytes"] = sizes
 
@@ -709,7 +745,9 @@ def build(raw: Path, out: Path, feature_texts_path: Path, with_bib: bool = True,
         citations["grambank"] = grambank_citation(gb["citation"])
     meta = {
         "datasets": {
-            k: {"title": v["title"], "tag": v["tag"], "repo": v["repo"], "url": v["url"],
+            k: {"title": v["title"], "tag": v.get("tag") or v["commit"][:10], "repo": v["repo"], "url": v["url"],
+                "ref_url": (f"https://github.com/{v['repo']}/releases/tag/{v['tag']}" if v.get("tag")
+                            else f"https://github.com/{v['repo']}/tree/{v['commit']}/{v.get('sparse', '')}".rstrip("/")),
                 "license": v["license"], "citation": citations[k]}
             for k, v in datasets.items()
         },
