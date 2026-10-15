@@ -1,81 +1,77 @@
-import { useEffect, useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useRef, useState } from 'preact/hooks';
 import { useApp } from '../app-context';
 import { grambankFeatureUrl, loadFeatures, loadGrambank } from '../lib/data';
 import { explanation, questionText, valueLabel } from '../lib/featureText';
 import { fmt } from '../lib/i18n';
-import { mulberry32 } from '../lib/random';
+import { recordTypology, typologyStats } from '../lib/progress';
+import { mulberry32, type Rng } from '../lib/random';
 import { readJSON, writeJSON } from '../lib/storage';
+import { updateProgress, useProgress } from '../lib/store';
 import { topNode } from '../lib/tree';
 import { generateQuestion, type Question, type QuestionContext, type TypologyDifficulty } from '../lib/typology';
 import type { Feature, GrambankData } from '../lib/types';
+import { ChallengeButton } from './Duels';
+import { Modal } from './Modal';
 
-const SERIES = 10;
-const DOMAINS = ['nominal domain', 'verbal domain', 'clause', 'pronoun', 'numeral'];
+export const SERIES = 10;
+export const DOMAINS = ['nominal domain', 'verbal domain', 'clause', 'pronoun', 'numeral'];
 
-type Phase = 'setup' | 'question' | 'done';
-
-export function Typology() {
-  const { core, t } = useApp();
+/** Grambank data for the quiz, loaded on demand. */
+export function useTypologyData(): { ctx: QuestionContext | null; error: boolean } {
+  const { core } = useApp();
   const [data, setData] = useState<{ gb: GrambankData; features: Feature[] } | null>(null);
   const [error, setError] = useState(false);
-  const [diff, setDiff] = useState<TypologyDifficulty>(() => readJSON('lb-typo-diff', 'easy'));
-  const [domain, setDomain] = useState<string>(() => readJSON('lb-typo-domain', ''));
-  const [phase, setPhase] = useState<Phase>('setup');
-  const [q, setQ] = useState<Question | null>(null);
-  const [n, setN] = useState(0);
-  const [score, setScore] = useState(0);
-  const [chosen, setChosen] = useState<string | null>(null);
-  const [asked, setAsked] = useState<Set<string>>(new Set());
-  const [failed, setFailed] = useState(false);
-
   useEffect(() => {
     Promise.all([loadGrambank(), loadFeatures()])
       .then(([gb, features]) => setData({ gb, features }))
       .catch(() => setError(true));
   }, []);
+  const ctx = useMemo(() => (data ? { core, gb: data.gb, features: data.features } : null), [core, data]);
+  return { ctx, error };
+}
 
-  const ctx: QuestionContext | null = useMemo(() => (data ? { core, gb: data.gb, features: data.features } : null), [core, data]);
-  const bestKey = `lb-typo-best-${diff}-${domain || 'all'}`;
+/**
+ * Ten questions generated from one seeded PRNG: the same seed (and data)
+ * always yields the same series — that is what makes typology duels fair.
+ */
+export function generateSeries(ctx: QuestionContext, difficulty: TypologyDifficulty, domain: string, seed: number): Question[] {
+  const rng: Rng = mulberry32(seed);
+  const asked = new Set<string>();
+  const out: Question[] = [];
+  for (let i = 0; i < SERIES; i++) {
+    const q = generateQuestion(ctx, difficulty, rng, { domain: domain || undefined, avoid: asked });
+    if (!q) break;
+    asked.add(q.feature.id);
+    out.push(q);
+  }
+  return out;
+}
 
-  const next = (askedSoFar: Set<string>) => {
-    if (!ctx) return;
-    const rng = mulberry32((Math.random() * 2 ** 32) >>> 0);
-    const question = generateQuestion(ctx, diff, rng, { domain: domain || undefined, avoid: askedSoFar });
-    setChosen(null);
-    if (!question) {
-      setFailed(true);
-      setPhase('setup');
-      return;
-    }
-    setFailed(false);
-    setQ(question);
-    setAsked(new Set([...askedSoFar, question.feature.id]));
-  };
+export function Typology() {
+  const { t } = useApp();
+  const { ctx, error } = useTypologyData();
+  const progress = useProgress();
+  const [diff, setDiff] = useState<TypologyDifficulty>(() => readJSON('gg-typo-diff', 'easy'));
+  const [domain, setDomain] = useState<string>(() => readJSON('gg-typo-domain', ''));
+  const [seed, setSeed] = useState<number | null>(null);
+  const [score, setScore] = useState<number | null>(null);
+  const [failed, setFailed] = useState(false);
+  const [showStats, setShowStats] = useState(false);
+  const stats = typologyStats(progress, (r) => r.difficulty === diff && (r.domain || '') === domain);
 
   const start = () => {
-    writeJSON('lb-typo-diff', diff);
-    writeJSON('lb-typo-domain', domain);
-    setN(1);
-    setScore(0);
-    setPhase('question');
-    next(new Set());
+    writeJSON('gg-typo-diff', diff);
+    writeJSON('gg-typo-domain', domain);
+    setScore(null);
+    setFailed(false);
+    setSeed((Math.random() * 2 ** 32) >>> 0);
   };
 
-  const answer = (gc: string) => {
-    if (chosen || !q) return;
-    setChosen(gc);
-    if (gc === q.answer) setScore((s) => s + 1);
-  };
-
-  const advance = () => {
-    if (n >= SERIES) {
-      const best = readJSON<number>(bestKey, 0);
-      if (score > best) writeJSON(bestKey, score);
-      setPhase('done');
-      return;
-    }
-    setN(n + 1);
-    next(asked);
+  const finish = (s: number) => {
+    const at = Date.now();
+    updateProgress((p) => recordTypology(p, `${at}-${Math.random().toString(36).slice(2, 7)}`, { at, difficulty: diff, domain, score: s, total: SERIES }));
+    setScore(s);
+    setSeed(null);
   };
 
   if (error) return <p class="notice">{t.loadError}</p>;
@@ -84,74 +80,175 @@ export function Typology() {
     <section class="typology">
       <header class="typo-head">
         <h1>{t.typologyTitle}</h1>
-        {phase === 'question' && (
-          <div class="typo-progress">
-            <span>{fmt(t.questionN, { n, total: SERIES })}</span>
-            <span class="typo-score">
-              {t.score}: <b>{score}</b>
-            </span>
-          </div>
-        )}
+        <div class="head-actions">
+          {seed == null && <ChallengeButton game="typology" difficulty={diff} domain={domain} />}
+          <button class="icon-btn" onClick={() => setShowStats(true)} title={t.typologyStats} aria-label={t.typologyStats}>
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path d="M5 20V11M12 20V4M19 20v-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+          </button>
+        </div>
       </header>
-      {phase === 'question' && (
-        <div class="progress-bar" aria-hidden="true">
-          <span style={{ width: `${((n - (chosen ? 0 : 1)) / SERIES) * 100}%` }} />
-        </div>
-      )}
 
-      {phase === 'setup' && (
-        <div class="panel typo-setup">
-          <p class="lede">{t.typologyIntro}</p>
-          <div class="choice-cards">
-            {(['easy', 'hard'] as const).map((d) => (
-              <button key={d} class={`choice${diff === d ? ' on' : ''}`} onClick={() => setDiff(d)} aria-pressed={diff === d}>
-                <b>{d === 'easy' ? t.easy : t.hardTypo}</b>
-                <span>{d === 'easy' ? t.easyDesc : t.hardDesc}</span>
-              </button>
-            ))}
-          </div>
-          <label class="field">
-            <span>{t.topic}</span>
-            <select value={domain} onChange={(e) => setDomain((e.target as HTMLSelectElement).value)}>
-              <option value="">{t.allTopics}</option>
-              {DOMAINS.map((d) => (
-                <option key={d} value={d}>
-                  {t.domains[d] ?? d}
-                </option>
-              ))}
-            </select>
-          </label>
-          {failed && <p class="notice">{t.noQuestion}</p>}
-          <div class="row">
-            <button class="btn primary big" onClick={start} disabled={!ctx}>
-              {ctx ? t.start : '…'}
-            </button>
-            <span class="muted">{fmt(t.best, { n: readJSON<number>(bestKey, 0), total: SERIES })}</span>
-          </div>
-        </div>
-      )}
-
-      {phase === 'question' && q && data && <QuestionView q={q} gb={data.gb} chosen={chosen} onAnswer={answer} onNext={advance} last={n >= SERIES} />}
-
-      {phase === 'done' && (
+      {seed != null && ctx ? (
+        <TypologySeries ctx={ctx} difficulty={diff} domain={domain} seed={seed} onFinish={finish} onEmpty={() => { setFailed(true); setSeed(null); }} />
+      ) : score != null ? (
         <div class="panel typo-done">
           <p class="big-score">
             {score}
             <small>/{SERIES}</small>
           </p>
           <p>{fmt(t.seriesDone, { n: score, total: SERIES })}</p>
-          <p class="muted">{fmt(t.best, { n: readJSON<number>(bestKey, 0), total: SERIES })}</p>
+          <p class="muted">{fmt(t.best, { n: stats.best, total: SERIES })}</p>
           <div class="row">
             <button class="btn primary" onClick={start}>
               {t.playAgain}
             </button>
-            <button class="btn" onClick={() => setPhase('setup')}>
+            <button class="btn" onClick={() => setScore(null)}>
               {t.topic}
             </button>
+            <ChallengeButton game="typology" difficulty={diff} domain={domain} />
+          </div>
+        </div>
+      ) : (
+        <div class="panel typo-setup">
+          <p class="lede">{t.typologyIntro}</p>
+          <TypologyOptions diff={diff} setDiff={setDiff} domain={domain} setDomain={setDomain} />
+          {failed && <p class="notice">{t.noQuestion}</p>}
+          <div class="row">
+            <button class="btn primary big" onClick={start} disabled={!ctx}>
+              {ctx ? t.start : '…'}
+            </button>
+            <span class="muted">{fmt(t.best, { n: stats.best, total: SERIES })}</span>
           </div>
         </div>
       )}
+
+      {showStats && (
+        <Modal title={t.typologyStats} onClose={() => setShowStats(false)}>
+          <TypologyStatsView />
+        </Modal>
+      )}
     </section>
+  );
+}
+
+export function TypologyOptions({ diff, setDiff, domain, setDomain }: {
+  diff: TypologyDifficulty;
+  setDiff: (d: TypologyDifficulty) => void;
+  domain: string;
+  setDomain: (d: string) => void;
+}) {
+  const { t } = useApp();
+  return (
+    <>
+      <div class="choice-cards">
+        {(['easy', 'hard'] as const).map((d) => (
+          <button key={d} class={`choice${diff === d ? ' on' : ''}`} onClick={() => setDiff(d)} aria-pressed={diff === d}>
+            <b>{d === 'easy' ? t.easy : t.hardTypo}</b>
+            <span>{d === 'easy' ? t.easyDesc : t.hardDesc}</span>
+          </button>
+        ))}
+      </div>
+      <label class="field">
+        <span>{t.topic}</span>
+        <select value={domain} onChange={(e) => setDomain((e.target as HTMLSelectElement).value)}>
+          <option value="">{t.allTopics}</option>
+          {DOMAINS.map((d) => (
+            <option key={d} value={d}>
+              {t.domains[d] ?? d}
+            </option>
+          ))}
+        </select>
+      </label>
+    </>
+  );
+}
+
+function TypologyStatsView() {
+  const { t, user } = useApp();
+  const progress = useProgress();
+  const groups: [string, (r: { difficulty: string }) => boolean][] = [
+    [t.easy, (r) => r.difficulty === 'easy'],
+    [t.hardTypo, (r) => r.difficulty === 'hard'],
+  ];
+  const all = typologyStats(progress);
+  const max = Math.max(1, ...all.distribution);
+  return (
+    <div class="stats">
+      <div class="stat-tiles">
+        <div class="tile"><b>{all.played}</b><span>{t.played}</span></div>
+        <div class="tile"><b>{all.average.toFixed(1)}</b><span>{t.avgScore}</span></div>
+        {groups.map(([label, f]) => (
+          <div class="tile" key={label}><b>{typologyStats(progress, f).best}</b><span>{t.bestScore} · {label}</span></div>
+        ))}
+      </div>
+      <h3>{t.scoreDistribution}</h3>
+      <ol class="dist">
+        {all.distribution.map((v, i) => (
+          <li key={i}>
+            <span class="dist-k">{i}</span>
+            <span class="dist-bar" style={{ width: `${Math.max(6, (100 * v) / max)}%` }}>
+              {v}
+            </span>
+          </li>
+        ))}
+      </ol>
+      <p class="muted small">{user ? t.synced : t.syncNote}</p>
+    </div>
+  );
+}
+
+/** A ten-question series. Calls onFinish with the score after the last answer. */
+export function TypologySeries({ ctx, difficulty, domain, seed, onFinish, onEmpty }: {
+  ctx: QuestionContext;
+  difficulty: TypologyDifficulty;
+  domain: string;
+  seed: number;
+  onFinish: (score: number) => void;
+  onEmpty?: () => void;
+}) {
+  const { t } = useApp();
+  const questions = useMemo(() => generateSeries(ctx, difficulty, domain, seed), [ctx, difficulty, domain, seed]);
+  const [n, setN] = useState(0);
+  const [score, setScore] = useState(0);
+  const [chosen, setChosen] = useState<string | null>(null);
+  const top = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!questions.length) onEmpty?.();
+  }, [questions]);
+  if (!questions.length) return null;
+  const q = questions[n];
+
+  const answer = (gc: string) => {
+    if (chosen) return;
+    setChosen(gc);
+    if (gc === q.answer) setScore((s) => s + 1);
+  };
+  const advance = () => {
+    if (n + 1 >= questions.length) {
+      onFinish(score);
+      return;
+    }
+    setN(n + 1);
+    setChosen(null);
+    top.current?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  };
+
+  return (
+    <div ref={top}>
+      <div class="typo-progress">
+        <span>{fmt(t.questionN, { n: n + 1, total: questions.length })}</span>
+        <span class="typo-score">
+          {t.score}: <b>{score}</b>
+        </span>
+      </div>
+      <div class="progress-bar" aria-hidden="true">
+        <span style={{ width: `${((n + (chosen ? 1 : 0)) / questions.length) * 100}%` }} />
+      </div>
+      <QuestionView q={q} gb={ctx.gb} chosen={chosen} onAnswer={answer} onNext={advance} last={n + 1 >= questions.length} />
+    </div>
   );
 }
 
@@ -165,23 +262,22 @@ function QuestionView({ q, gb, chosen, onAnswer, onNext, last }: {
 }) {
   const { core, t, name, openCard } = useApp();
   const f = q.feature;
-  const text = questionText(f, q.value, t);
   return (
     <div class="panel question">
       <p class="q-domain">{t.domains[f.domain] ?? f.domain}</p>
-      <h2 class="q-text">{text}</h2>
+      <h2 class="q-text">{questionText(f, q.value, t)}</h2>
       <div class="options">
         {q.options.map((gc) => {
           const v = gb.values[gc][q.featureIndex];
           const state = !chosen ? '' : gc === q.answer ? ' correct' : gc === chosen ? ' wrong' : ' dim';
-          const top = topNode(core, gc);
+          const topId = topNode(core, gc);
           const area = core.languages[gc][2];
           return (
             <div key={gc} class={`option${state}`}>
               <button class="option-btn" onClick={() => onAnswer(gc)} disabled={!!chosen}>
                 <span class="opt-name">{name(gc)}</span>
                 <span class="opt-meta">
-                  {top === gc ? t.cardIsolate : name(top)}
+                  {topId === gc ? t.cardIsolate : name(topId)}
                   {area ? ` · ${t.areas[area] ?? area}` : ''}
                 </span>
                 {chosen && <span class="opt-value">{valueLabel(f, v, t)}</span>}

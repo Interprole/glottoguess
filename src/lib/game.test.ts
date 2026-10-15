@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { core } from './__fixtures__/core';
 import {
-  applyGuess, applyHint, attemptsLeft, canTakeHint, evaluateGuess, HINT_COST, MAX_ATTEMPTS, newGame, shareText, tier,
+  applyGuess, applyHint, attemptsLeft, canTakeHint, evaluateGuess, giveUp, HINT_COST, MAX_ATTEMPTS, newGame, shareText, tier,
 } from './game';
 
 const labels = { normal: 'Normal', hard: 'Hardcore', free: 'free play' };
@@ -38,19 +38,39 @@ describe('game state', () => {
   it('charges hints and loses when attempts run out', () => {
     let s = newGame('russ');
     s = applyHint(s, 'area');
-    expect(attemptsLeft(s)).toBe(MAX_ATTEMPTS - HINT_COST);
+    expect(HINT_COST.area).toBe(3);
+    expect(attemptsLeft(s)).toBe(MAX_ATTEMPTS - 3);
     expect(canTakeHint(s, 'area')).toBe(false);
     const others = Object.keys(core.languages).filter((x) => x !== 'russ');
     for (let i = 0; i < MAX_ATTEMPTS; i++) s = applyGuess(s, others[i % others.length] + (i >= others.length ? i : ''));
     expect(s.status).toBe('lost');
-    expect(s.guesses.length).toBe(MAX_ATTEMPTS - HINT_COST);
+    expect(s.guesses.length).toBe(MAX_ATTEMPTS - 3);
+  });
+  it('charges the speaker hint (5) and status hint (2)', () => {
+    let s = applyHint(applyHint(newGame('russ'), 'speakers'), 'status');
+    expect(attemptsLeft(s)).toBe(MAX_ATTEMPTS - 7);
+    // a hint is refused when it would use up the last attempts
+    const others = Object.keys(core.languages).filter((x) => x !== 'russ');
+    for (let i = 0; i < 9; i++) s = applyGuess(s, others[i]);
+    expect(attemptsLeft(s)).toBe(4);
+    expect(canTakeHint(s, 'area')).toBe(true);
+    s = applyGuess(s, others[9]);
+    expect(canTakeHint(s, 'area')).toBe(false);
+  });
+  it('gives up as a loss', () => {
+    const s = giveUp(applyGuess(newGame('russ'), 'engl'));
+    expect(s.status).toBe('lost');
+    expect(s.gaveUp).toBe(true);
+    expect(applyGuess(s, 'russ')).toBe(s);
+    const text = shareText(core, s, { puzzle: 3, difficulty: 'hard', url: 'u', labels });
+    expect(text).toContain('X/20 🏳️');
   });
   it('shares a spoiler-free result', () => {
     let s = newGame('russ');
     for (const g of ['swah', 'basq', 'engl', 'poli', 'ukra', 'russ']) s = applyGuess(s, g);
     s = { ...s, hints: ['area'] };
     const text = shareText(core, s, { puzzle: 12, difficulty: 'normal', url: 'https://x', labels });
-    expect(text).toContain('LangBang #12');
+    expect(text).toContain('GlottoGuess #12');
     expect(text).toContain('⬛🟦🟨🟧🟥🟩');
     expect(text).toContain('💡1');
     for (const id of Object.keys(core.languages)) expect(text).not.toContain(core.languages[id][0]);

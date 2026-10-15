@@ -12,9 +12,10 @@ import type { CoreData, Difficulty } from './types';
  * making every guess count. Hints cost attempts (see HINT_COST).
  */
 export const MAX_ATTEMPTS = 20;
-export const HINT_COST = 2;
-export type HintKind = 'area' | 'status' | 'country';
-export const HINT_KINDS: HintKind[] = ['area', 'status', 'country'];
+export type HintKind = 'area' | 'status' | 'speakers';
+export const HINT_KINDS: HintKind[] = ['area', 'status', 'speakers'];
+/** Attempts each hint costs. The speaker hint costs the same even if no data turn out to exist. */
+export const HINT_COST: Record<HintKind, number> = { area: 3, status: 2, speakers: 5 };
 
 export interface GuessResult {
   id: string;
@@ -87,10 +88,16 @@ export interface GameState {
   guesses: string[];
   hints: HintKind[];
   status: 'playing' | 'won' | 'lost';
+  /** the player pressed "Give up" (counts as a loss) */
+  gaveUp?: boolean;
+}
+
+export function hintCost(hints: readonly HintKind[]): number {
+  return hints.reduce((n, h) => n + (HINT_COST[h] ?? 0), 0);
 }
 
 export function attemptsUsed(s: Pick<GameState, 'guesses' | 'hints'>): number {
-  return s.guesses.length + s.hints.length * HINT_COST;
+  return s.guesses.length + hintCost(s.hints);
 }
 
 export function attemptsLeft(s: Pick<GameState, 'guesses' | 'hints'>): number {
@@ -111,7 +118,12 @@ export function applyGuess(s: GameState, guess: string): GameState {
 }
 
 export function canTakeHint(s: GameState, kind: HintKind): boolean {
-  return s.status === 'playing' && !s.hints.includes(kind) && attemptsLeft(s) > HINT_COST;
+  return s.status === 'playing' && !s.hints.includes(kind) && attemptsLeft(s) > HINT_COST[kind];
+}
+
+export function giveUp(s: GameState): GameState {
+  if (s.status !== 'playing') return s;
+  return { ...s, status: 'lost', gaveUp: true };
 }
 
 export function applyHint(s: GameState, kind: HintKind): GameState {
@@ -131,9 +143,9 @@ export function shareText(
   const rows = s.guesses.map((g) => TIER_EMOJI[tier(core, evaluateGuess(core, g, s.target), s.target)]);
   const lines: string[] = [];
   for (let i = 0; i < rows.length; i += 10) lines.push(rows.slice(i, i + 10).join(''));
-  const score = s.status === 'won' ? `${attemptsUsed(s)}/${MAX_ATTEMPTS}` : `X/${MAX_ATTEMPTS}`;
+  const score = s.status === 'won' ? `${attemptsUsed(s)}/${MAX_ATTEMPTS}` : `X/${MAX_ATTEMPTS}${s.gaveUp ? ' 🏳️' : ''}`;
   const hints = s.hints.length ? ` 💡${s.hints.length}` : '';
-  const title = opts.puzzle != null ? `LangBang #${opts.puzzle}` : `LangBang (${opts.labels.free})`;
+  const title = opts.puzzle != null ? `GlottoGuess #${opts.puzzle}` : `GlottoGuess (${opts.labels.free})`;
   const diff = opts.difficulty === 'hard' ? opts.labels.hard : opts.labels.normal;
   const last = s.guesses.length ? evaluateGuess(core, s.guesses[s.guesses.length - 1], s.target) : null;
   const tail = s.status !== 'won' && last?.dir ? ` ${ARROWS[last.dir]}` : '';

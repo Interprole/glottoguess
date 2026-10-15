@@ -42,6 +42,31 @@ describe.skipIf(!has)('real data', () => {
     for (const f of features) expect(f.en && (f.en.has || f.en.values)).toBeTruthy();
   });
 
+  it('has speaker estimates for most puzzle languages', () => {
+    const normal = Object.values(core.languages).filter((r) => r[9] & FLAG_NORMAL);
+    const known = normal.filter((r) => r[10] != null).length;
+    expect(known / normal.length).toBeGreaterThan(0.8);
+    expect(core.languages['russ1263'][10]).toBeGreaterThan(1e8);
+  });
+
+  it('generates the same typology series from the same seed (duels)', () => {
+    const ctx = { core, gb, features };
+    const ids = (seed: number) => {
+      const rng = mulberry32(seed);
+      const asked = new Set<string>();
+      const out: string[] = [];
+      for (let i = 0; i < 10; i++) {
+        const q = generateQuestion(ctx, 'hard', rng, { avoid: asked })!;
+        asked.add(q.feature.id);
+        out.push(`${q.feature.id}:${q.options.join(',')}`);
+      }
+      return out;
+    };
+    expect(ids(12345)).toEqual(ids(12345));
+    expect(ids(12345)).not.toEqual(ids(54321));
+    expect(new Set(ids(7).map((x) => x.split(':')[0])).size).toBe(10);
+  });
+
   it('generates valid questions in every topic and difficulty', () => {
     const ctx = { core, gb, features };
     for (const domain of ['', 'nominal domain', 'verbal domain', 'clause', 'pronoun', 'numeral']) {

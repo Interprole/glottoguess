@@ -1,4 +1,4 @@
-/* LangBang — an atlas-and-dendrogram visual identity.
+/* GlottoGuess — an atlas-and-dendrogram visual identity.
    Paper, ink, a teal for genealogy and an ochre for (non-genealogical) areas. */
 
 :root {
@@ -505,3 +505,51 @@ button { font: inherit; color: inherit; }
   .stat-tiles { grid-template-columns: repeat(2, 1fr); }
   .tree-panel { padding: 12px 6px 10px 6px; }
 }
+
+/* ---------------------------------------------------------------- accounts & duels */
+.small { font-size: 0.82rem; }
+.btn.small { min-height: 34px; padding: 0 12px; font-size: 0.88rem; }
+.btn.ghost { background: transparent; border-style: dashed; color: var(--ink-soft); }
+.btn.ghost:hover { color: var(--danger); border-color: var(--danger); }
+.giveup { align-self: flex-start; }
+.head-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.duel-btn { white-space: nowrap; }
+.board-status { display: flex; justify-content: flex-end; margin: -6px 0 6px; }
+@media (max-width: 520px) { .board-status { justify-content: flex-start; } }
+.hint-cost { font-size: 0.75rem; font-weight: 600; color: var(--area); margin-left: 2px; }
+.hint-btn.taken .hint-cost { color: var(--ink-faint); }
+
+.signin { gap: 7px; letter-spacing: 0; font-weight: 500; font-size: 0.85rem; }
+@media (max-width: 520px) { .signin-label { display: none; } }
+.user-menu { position: relative; }
+.avatar-btn { width: 36px; height: 36px; padding: 0; border-radius: 50%; border: 2px solid var(--accent); background: var(--accent-soft); cursor: pointer; overflow: hidden; display: grid; place-items: center; font-weight: 700; color: var(--accent); }
+.avatar-btn img { width: 100%; height: 100%; object-fit: cover; }
+.user-pop {
+  position: absolute; right: 0; top: calc(100% + 8px); z-index: 50; min-width: 230px;
+  display: flex; flex-direction: column; gap: 8px; padding: 14px;
+  background: var(--bg-elev); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 18px 40px -16px rgb(0 0 0 / 35%);
+}
+.user-pop p { margin: 0; }
+
+.duel-create { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
+.duel-create p { margin: 0; }
+.link-box { width: 100%; }
+.link-box input { width: 100%; height: 42px; padding: 0 12px; border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: var(--bg-sunk); color: var(--ink); font: 0.9rem var(--font-mono); }
+.duel-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+.duel-head h1 { margin: 0; font-size: clamp(1.5rem, 4.4vw, 2.1rem); }
+.duel-list { list-style: none; padding: 0; display: grid; gap: 8px; }
+.duel-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; margin: 0 !important; }
+.leaderboard { margin-bottom: 14px; }
+.lb-list { list-style: none; margin: 0; padding: 0; }
+.lb-list li { display: grid; grid-template-columns: 26px 32px 1fr auto; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.lb-list li:last-child { border-bottom: 0; }
+.lb-list li.me { background: color-mix(in srgb, var(--accent) 8%, transparent); border-radius: 8px; }
+.lb-rank { font-family: var(--font-display); font-weight: 700; text-align: center; color: var(--ink-soft); }
+.lb-list li:first-child .lb-rank { color: var(--t-family); }
+.lb-photo { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.lb-photo.blank { background: var(--bg-sunk); }
+.lb-name { font-weight: 500; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.lb-score { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+.tag { margin-left: 6px; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; padding: 1px 6px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); }
+.byline { margin-top: 6px !important; }
+.typo-head .head-actions { margin-bottom: 10px; }

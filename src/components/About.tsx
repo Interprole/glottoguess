@@ -7,7 +7,7 @@ export function About({ meta }: { meta: MetaData | null }) {
     <article class="prose">
       <h1>About</h1>
       <p>
-        LangBang is a pair of small games about the world’s languages, built entirely on open linguistic data. The genealogical puzzle uses the Glottolog classification, the typology quiz uses Grambank features. The site is static: there is no server, and your results stay in your browser (localStorage).
+        GlottoGuess is a pair of small games about the world’s languages, built entirely on open linguistic data. The genealogical puzzle uses the Glottolog classification, the typology quiz uses Grambank features. The site is static (GitHub Pages). Your results are kept in your browser; if you sign in with Google, they are also stored in a Firebase database so that they follow you across devices and can be used in duels. Only your name, Google profile picture and game results are stored.
       </p>
 
       <h2>Data and how to cite them</h2>
@@ -15,7 +15,7 @@ export function About({ meta }: { meta: MetaData | null }) {
         <p>…</p>
       ) : (
         <ul class="citations">
-          {(['glottolog', 'grambank', 'wals'] as const).map((k) => (
+          {(['glottolog', 'grambank', 'wals', 'linguameta'] as const).map((k) => (
             <li key={k}>
               <h3>
                 <a href={ds[k].url} target="_blank" rel="noopener">
@@ -24,12 +24,12 @@ export function About({ meta }: { meta: MetaData | null }) {
               </h3>
               <blockquote>{ds[k].citation}</blockquote>
               <p class="muted">
-                Version: CLDF{' '}
-                <a href={`https://github.com/${ds[k].repo}/releases/tag/${ds[k].tag}`} target="_blank" rel="noopener">
+                Version: {k === 'linguameta' ? 'commit' : 'CLDF'}{' '}
+                <a href={ds[k].ref_url ?? `https://github.com/${ds[k].repo}/releases/tag/${ds[k].tag}`} target="_blank" rel="noopener">
                   {ds[k].repo}@{ds[k].tag}
                 </a>{' '}
                 · license{' '}
-                <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">
+                <a href={k === 'linguameta' ? 'https://creativecommons.org/licenses/by-sa/4.0/' : 'https://creativecommons.org/licenses/by/4.0/'} target="_blank" rel="noopener">
                   {ds[k].license}
                 </a>
               </p>
@@ -38,7 +38,7 @@ export function About({ meta }: { meta: MetaData | null }) {
         </ul>
       )}
       <p>
-        All three datasets are licensed under Creative Commons Attribution 4.0. LangBang’s data are derived: reduced and transformed by the open-source script scripts/build_data.py. The plain-language wordings of Grambank features were written for this game and are not official; the original wording is always shown alongside.
+        Glottolog, Grambank and WALS are licensed under Creative Commons Attribution 4.0; LinguaMeta (speaker numbers) under CC BY-SA 4.0. GlottoGuess’s data are derived: reduced and transformed by the open-source script scripts/build_data.py. The plain-language wordings of Grambank features were written for this game and are not official; the original wording is always shown alongside.
       </p>
       <p class="muted">
         Language names: Glottolog (including alternative names from various catalogues and Wikipedia/Lexvo names shipped with Glottolog). Map: Natural Earth (public domain) via the world-atlas package.
@@ -71,10 +71,13 @@ export function About({ meta }: { meta: MetaData | null }) {
         </>
       )}
 
+      <h2>Author</h2>
+      <p>GlottoGuess is made by <strong>Gleb Bubnov</strong>.</p>
+
       <h2>Code</h2>
       <p>
-        <a href="https://github.com/Interprole/langbang" target="_blank" rel="noopener">
-          github.com/Interprole/langbang
+        <a href="https://github.com/Interprole/glottoguess" target="_blank" rel="noopener">
+          github.com/Interprole/glottoguess
         </a>{' '}
         — Vite + TypeScript + Preact, Python data pipeline.
       </p>

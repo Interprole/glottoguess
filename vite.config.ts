@@ -12,9 +12,9 @@ try {
   /* data not built yet */
 }
 
-// Served from https://<user>.github.io/langbang/ on GitHub Pages.
+// Served from https://<user>.github.io/glottoguess/ on GitHub Pages.
 export default defineConfig({
-  base: process.env.BASE_PATH ?? '/langbang/',
+  base: process.env.BASE_PATH ?? '/glottoguess/',
   plugins: [preact()],
   define: { __DATA_VERSION__: JSON.stringify(dataVersion) },
   test: {

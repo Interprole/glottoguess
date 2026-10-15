@@ -48,8 +48,12 @@ export function Rules() {
           </li>
           <li>Each guess also shows the distance to the mystery language (Glottolog coordinates) and the direction.</li>
           <li>
-            Hints — macroarea, Glottolog endangerment status, one country — cost {HINT_COST} attempts each. (Glottolog’s
-            open data have no speaker numbers, hence the status.)
+            Hints cost attempts: macroarea −{HINT_COST.area}, Glottolog endangerment status −{HINT_COST.status}, number
+            of speakers −{HINT_COST.speakers}. Speaker estimates come from LinguaMeta; where it has none, the hint still
+            costs {HINT_COST.speakers} and says so.
+          </li>
+          <li>
+            Stuck? <strong>Give up</strong> reveals the answer (it counts as a loss).
           </li>
           <li>
             <strong>Normal</strong>: the language is in the WALS 200-language sample, or it is described in Grambank/WALS
@@ -58,6 +62,11 @@ export function Rules() {
             can use them as guesses).
           </li>
           <li>Free play picks a random language and does not affect your statistics.</li>
+          <li>
+            Sign in with Google to keep your statistics across devices, and challenge friends to a{' '}
+            <strong>duel</strong>: everyone plays the same mystery language (or the same ten typology questions) whenever
+            they like, and those who have finished — plus the duel’s creator — see the leaderboard.
+          </li>
         </ul>
       </>
 
@@ -74,7 +83,7 @@ export function Rules() {
             <TierLegend />
           </div>
           <p>The shareable result (no spoilers):</p>
-          <pre class="share-preview">{`🌳 LangBang #12 · Normal · 7/20\n${emoji}`}</pre>
+          <pre class="share-preview">{`🌳 GlottoGuess #12 · Normal · 7/20\n${emoji}`}</pre>
         </section>
       )}
 

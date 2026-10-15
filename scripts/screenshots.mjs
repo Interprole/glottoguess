@@ -3,7 +3,7 @@
 import { chromium } from 'playwright';
 import { mkdirSync } from 'node:fs';
 
-const base = process.argv[2] ?? 'http://localhost:4173/langbang/';
+const base = process.argv[2] ?? 'http://localhost:4173/glottoguess/';
 const out = process.argv[3] ?? 'docs/screenshots';
 mkdirSync(out, { recursive: true });
 const errors = [];
@@ -13,8 +13,8 @@ const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePa
 async function session({ width, height, theme = 'light', mobile = false }) {
   const ctx = await browser.newContext({ viewport: { width, height }, deviceScaleFactor: 2, isMobile: mobile, hasTouch: mobile });
   await ctx.addInitScript((th) => {
-    localStorage.setItem('lb-theme', JSON.stringify(th));
-    localStorage.setItem('lb-mode', JSON.stringify('free'));
+    localStorage.setItem('gg-theme', JSON.stringify(th));
+    localStorage.setItem('gg-mode', JSON.stringify('free'));
   }, theme);
   const page = await ctx.newPage();
   page.on('pageerror', (e) => errors.push(`pageerror: ${e.message}`));
@@ -25,7 +25,7 @@ async function session({ width, height, theme = 'light', mobile = false }) {
 /** Play a fixed free game by forcing the target through localStorage. */
 async function playExample(page, guesses) {
   await page.evaluate(() => {
-    localStorage.setItem('lb-free-normal', JSON.stringify({ target: 'poli1260', guesses: [], hints: [], status: 'playing' }));
+    localStorage.setItem('gg-free-normal', JSON.stringify({ target: 'poli1260', guesses: [], hints: [], status: 'playing' }));
   });
   await page.goto(base + '#/play', { waitUntil: 'networkidle' });
   await page.reload({ waitUntil: 'networkidle' });
