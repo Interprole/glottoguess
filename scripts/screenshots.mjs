@@ -3,7 +3,7 @@
 import { chromium } from 'playwright';
 import { mkdirSync } from 'node:fs';
 
-const base = process.argv[2] ?? 'http://localhost:4173/glottoguess/';
+const base = process.argv[2] ?? 'http://localhost:4173/';
 const out = process.argv[3] ?? 'docs/screenshots';
 mkdirSync(out, { recursive: true });
 const errors = [];

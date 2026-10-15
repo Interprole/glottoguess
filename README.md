@@ -91,7 +91,7 @@ python -m pytest tests
 
 # site
 npm ci
-npm run dev                       # http://localhost:5173/glottoguess/
+npm run dev                       # http://localhost:5173/
 npm test                          # Vitest
 npm run build                     # typecheck + production build into dist/
 ```

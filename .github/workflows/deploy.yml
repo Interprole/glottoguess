@@ -31,8 +31,6 @@ jobs:
       - run: npm test
       - name: Build site
         run: npm run build
-        env:
-          BASE_PATH: /${{ github.event.repository.name }}/
       - uses: actions/configure-pages@v5
         with:
           enablement: true
